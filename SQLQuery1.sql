@@ -1,0 +1,1 @@
+﻿insert into Zivotinja(Vrsta,Pol,Starost,Staniste,TipIshrane) values ('asdfaf',
