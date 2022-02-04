@@ -21,6 +21,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         public void Inicijalizuj(UCDodajZivotinju uc)
         {
+            
             uc.CmbPol.DataSource = Enum.GetValues(typeof(Pol));
             uc.CmbTipIshrane.DataSource = Enum.GetValues(typeof(TipIshrane));
             OsveziDgv(uc);
@@ -47,10 +48,11 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private void NapuniZivotinju(UCDodajZivotinju uc)
         {
-            zivotinja.Pol = (int)((Pol)uc.CmbPol.SelectedItem);
+            
+            zivotinja.Pol = ((Pol)uc.CmbPol.SelectedItem).ToString();
             zivotinja.Staniste = uc.TxtStaniste.Text;
             zivotinja.Starost = int.Parse(uc.TxtStarost.Text);
-            zivotinja.TipIshrane = (int)((TipIshrane)uc.CmbTipIshrane.SelectedItem);
+            zivotinja.TipIshrane = ((TipIshrane)uc.CmbTipIshrane.SelectedItem).ToString();
             zivotinja.Vrsta = uc.TxtVrsta.Text;
         }
 

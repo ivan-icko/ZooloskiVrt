@@ -187,7 +187,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
             this.Controls.Add(this.dgvZivotinje);
             this.Controls.Add(this.gb1);
             this.Name = "UCDodajZivotinju";
-            this.Size = new System.Drawing.Size(811, 638);
+            this.Size = new System.Drawing.Size(905, 656);
             this.gb1.ResumeLayout(false);
             this.gb1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZivotinje)).EndInit();

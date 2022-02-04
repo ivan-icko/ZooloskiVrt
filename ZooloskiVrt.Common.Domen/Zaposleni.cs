@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace ZooloskiVrt.Common.Domen
 {
     [Serializable]
-    public class Zaposleni:IDomenskiObjekat
+    public class Zaposleni : IDomenskiObjekat
     {
         public int IdZaposlenog { get; set; }
         public string Ime { get; set; }
@@ -16,16 +17,24 @@ namespace ZooloskiVrt.Common.Domen
         public string KorisnickoIme { get; set; }
         public string Sifra { get; set; }
 
+        public Zaposleni() { }
+        [Browsable(false)]
         public string NazivTabele => "Zaposleni";
+        [Browsable(false)]
         public string Vrednosti => $"{Ime},{Prezime},{KorisnickoIme},{Sifra}";
+        [Browsable(false)]
+        public string Uslov { get; set; }
+        [Browsable(false)]
+        public string Kolone =>"(Ime,Prezime,KorisnickoIme,Sifra)";
 
-        public string Uslov => $"KorisnickoIme like '{KorisnickoIme}' and Sifra like '{Sifra}'";
-
-        public string Kolone => throw new NotImplementedException();
-
-        public string IdKolona => throw new NotImplementedException();
-
-        public int Id => throw new NotImplementedException();
+        public Zaposleni(string ime, string prezime, string korisnickoIme, string sifra)
+        {
+            if (string.IsNullOrEmpty(ime)) { ime = "%"; }
+            if (string.IsNullOrEmpty(prezime)) { prezime = "%"; }
+            if (string.IsNullOrEmpty(korisnickoIme)) { korisnickoIme = "%"; }
+            if (string.IsNullOrEmpty(sifra)) { sifra = "%"; }
+            this.Uslov = $"Ime like '{ime}' and Prezime like '{prezime}' and KorisnickoIme like '{korisnickoIme}' and Sifra like '{sifra}'";
+        }
 
         public IDomenskiObjekat ProcitajRed(SqlDataReader reader)
         {

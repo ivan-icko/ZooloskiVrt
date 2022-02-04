@@ -34,8 +34,9 @@ namespace ZooloskiVrt.Klijent.Forme
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.zivotinjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlMain = new System.Windows.Forms.Panel();
             this.obrisiZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.pretraziZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@ namespace ZooloskiVrt.Klijent.Forme
             this.zivotinjeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(156, 516);
+            this.menuStrip1.Size = new System.Drawing.Size(87, 565);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -61,7 +62,8 @@ namespace ZooloskiVrt.Klijent.Forme
             // 
             this.zivotinjeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dodajZivotinjuToolStripMenuItem,
-            this.obrisiZivotinjuToolStripMenuItem});
+            this.obrisiZivotinjuToolStripMenuItem,
+            this.pretraziZivotinjuToolStripMenuItem});
             this.zivotinjeToolStripMenuItem.Name = "zivotinjeToolStripMenuItem";
             this.zivotinjeToolStripMenuItem.Size = new System.Drawing.Size(143, 24);
             this.zivotinjeToolStripMenuItem.Text = "Zivotinje";
@@ -73,14 +75,6 @@ namespace ZooloskiVrt.Klijent.Forme
             this.dodajZivotinjuToolStripMenuItem.Text = "Dodaj zivotinju";
             this.dodajZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.dodajZivotinjuToolStripMenuItem_Click);
             // 
-            // pnlMain
-            // 
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(156, 0);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(580, 516);
-            this.pnlMain.TabIndex = 2;
-            // 
             // obrisiZivotinjuToolStripMenuItem
             // 
             this.obrisiZivotinjuToolStripMenuItem.Name = "obrisiZivotinjuToolStripMenuItem";
@@ -88,11 +82,26 @@ namespace ZooloskiVrt.Klijent.Forme
             this.obrisiZivotinjuToolStripMenuItem.Text = "Obrisi zivotinju";
             this.obrisiZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.obrisiZivotinjuToolStripMenuItem_Click);
             // 
+            // pnlMain
+            // 
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(87, 0);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(865, 565);
+            this.pnlMain.TabIndex = 2;
+            // 
+            // pretraziZivotinjuToolStripMenuItem
+            // 
+            this.pretraziZivotinjuToolStripMenuItem.Name = "pretraziZivotinjuToolStripMenuItem";
+            this.pretraziZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pretraziZivotinjuToolStripMenuItem.Text = "Pretrazi zivotinju";
+            this.pretraziZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.pretraziZivotinjuToolStripMenuItem_Click);
+            // 
             // FrmGlavna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 516);
+            this.ClientSize = new System.Drawing.Size(952, 565);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -113,5 +122,6 @@ namespace ZooloskiVrt.Klijent.Forme
         private System.Windows.Forms.ToolStripMenuItem dodajZivotinjuToolStripMenuItem;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.ToolStripMenuItem obrisiZivotinjuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pretraziZivotinjuToolStripMenuItem;
     }
 }

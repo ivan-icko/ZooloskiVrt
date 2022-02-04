@@ -22,16 +22,12 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Sva polja su obavezna");
                 return;
             }
-            Zaposleni korisnik = new Zaposleni()
-            {
-                KorisnickoIme = korisnickoIme,
-                Sifra = sifra
-            };
+            Zaposleni korisnik = new Zaposleni(null,null,korisnickoIme,sifra);
 
             try
             {
                 Komunikacija.Instance.PoveziSe();
-                Sesija.Instance.Korisnik = Komunikacija.Instance.ZahtevajIVratiRezultat<Zaposleni>(Common.Komunikacija.Operacija.Prijava, korisnik);
+                Sesija.Instance.Korisnik = Komunikacija.Instance.ZahtevajIVratiRezultat<Zaposleni>(Common.Komunikacija.Operacija.Prijava, korisnik.Uslov);
                 if (Sesija.Instance.Korisnik != null)
                 {
                     

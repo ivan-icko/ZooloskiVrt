@@ -27,12 +27,6 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
 
         
 
-        public Zaposleni Login(Zaposleni z)
-        {
-            OpstaSistemskaOperacija so = new PretragaZaposlenogSO(z);
-            so.IzvrsiTemplejt();
-            return ((PretragaZaposlenogSO)so).Zaposleni;
-        }
 
         public void DodajZivotinju(Zivotinja z)
         {
@@ -53,5 +47,18 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             so.IzvrsiTemplejt();
         }
 
+        public List<Zivotinja> PronadjiZivotinje(string z)
+        {
+            OpstaSistemskaOperacija so = new PronadjiZivotinjuSO(z);
+            so.IzvrsiTemplejt();
+            return ((PronadjiZivotinjuSO)so).Zivotinje;
+        }
+
+        public object PronadjiZaposlenog(string v)
+        {
+            OpstaSistemskaOperacija so = new PretragaZaposlenogSO(v);
+            so.IzvrsiTemplejt();
+            return ((PretragaZaposlenogSO)so).Zaposleni;
+        }
     }
 }

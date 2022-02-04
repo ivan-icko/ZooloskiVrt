@@ -1,0 +1,1 @@
+﻿select * from Zivotinja where Vrsta like 'vrsta'

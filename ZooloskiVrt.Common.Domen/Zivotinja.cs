@@ -13,34 +13,44 @@ namespace ZooloskiVrt.Common.Domen
     {
         public int IdZivotinje { get; set; }
         public string Vrsta { get; set; }
-        public int Pol { get; set; }
+        public string Pol { get; set; }
         public int Starost { get; set; }
         public string Staniste { get; set; }
-        public int TipIshrane { get; set; }
+        public string TipIshrane { get; set; }
+
+        public Zivotinja() { }
 
         [Browsable(false)]
         public string NazivTabele => "Zivotinja";
         [Browsable(false)]
-        public string Vrednosti => $"'{Vrsta}',{Pol},{Starost},'{Staniste}',{TipIshrane}";
+        public string Vrednosti => $"'{Vrsta}','{Pol}',{Starost},'{Staniste}','{TipIshrane}'";
         [Browsable(false)]
-        public string Uslov => $"IdZivotinje like={IdZivotinje}";
+        public string Uslov {get;set;}
         [Browsable(false)]
         public string Kolone => "(Vrsta,Pol,Starost,Staniste,TipIshrane)";
-        [Browsable(false)]
-        public string IdKolona => "IdZivotinje";
-        [Browsable(false)]
-        public int Id => IdZivotinje;
+      
 
+        
+
+        public Zivotinja(string vrsta,string pol, string starost, string staniste, string tipIshrane)
+        {
+            if (string.IsNullOrEmpty(vrsta)) { vrsta = "%"; }
+            if (string.IsNullOrEmpty(starost)) { starost = "%"; }
+            if (string.IsNullOrEmpty(staniste)) { staniste = "%"; }
+            if (string.IsNullOrEmpty(tipIshrane)) { tipIshrane = "%"; }
+            this.Uslov = $"Vrsta like '{vrsta}' and pol like '{pol}' and cast(Starost as nvarchar(10)) like '{starost}' and Staniste like '{staniste}' and TipIshrane like '{tipIshrane}'";
+        }
+        
         public IDomenskiObjekat ProcitajRed(SqlDataReader reader)
         {
             Zivotinja z = new Zivotinja()
             {
                 IdZivotinje = (int)reader["IdZivotinje"],
                 Vrsta = (string)reader["Vrsta"],
-                Pol = (int)reader["Pol"],
+                Pol = (string)reader["Pol"],
                 Starost = (int)reader["Starost"],
                 Staniste = (string)reader["Staniste"],
-                TipIshrane = (int)reader["TipIshrane"]
+                TipIshrane = (string)reader["TipIshrane"]
             };
             return z;
         }

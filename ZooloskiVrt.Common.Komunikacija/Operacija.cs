@@ -13,6 +13,7 @@ namespace ZooloskiVrt.Common.Komunikacija
         VratiPol,
         DodajZivotinju,
         VratiSveZivotinje,
-        ObrisiZivotinju
+        ObrisiZivotinju,
+        PronadjiZivotinje
     }
 }

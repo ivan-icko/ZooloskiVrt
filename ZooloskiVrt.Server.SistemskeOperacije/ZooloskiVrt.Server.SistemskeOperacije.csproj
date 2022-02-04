@@ -45,6 +45,7 @@
     <Compile Include="ObrisiZivotinjuSO.cs" />
     <Compile Include="OpstaSistemskaOperacija.cs" />
     <Compile Include="PretragaZaposlenogSO.cs" />
+    <Compile Include="PronadjiZivotinjuSO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VratiListuZivotinjaSO.cs" />
   </ItemGroup>

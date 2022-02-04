@@ -22,6 +22,7 @@ namespace ZooloskiVrt.Klijent.Forme
         {
             UCDodajZivotinju dodajNovuZivotinju = new UCDodajZivotinju();
             dodajNovuZivotinju.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
             pnlMain.Controls.Add(dodajNovuZivotinju);
         }
 
@@ -29,7 +30,16 @@ namespace ZooloskiVrt.Klijent.Forme
         {
             UCObrisiZivotinju uCObrisiZivotinju = new UCObrisiZivotinju();
             uCObrisiZivotinju.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
             pnlMain.Controls.Add(uCObrisiZivotinju);
+        }
+
+        private void pretraziZivotinjuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UCPretraziZivotinju UcPretrazi = new UCPretraziZivotinju();
+            UcPretrazi.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(UcPretrazi);
         }
     }
 }

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GUIController\ObrisiZivotinjuKontroler.cs" />
+    <Compile Include="GUIController\PretraziZIvotinjuKontroler.cs" />
     <Compile Include="Komunikacija.cs" />
     <Compile Include="FrmGlavna.cs">
       <SubType>Form</SubType>
@@ -77,6 +78,12 @@
     <Compile Include="UserControls\Zivotinje\UCObrisiZivotinju.Designer.cs">
       <DependentUpon>UCObrisiZivotinju.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Zivotinje\UCPretraziZivotinju.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Zivotinje\UCPretraziZivotinju.Designer.cs">
+      <DependentUpon>UCPretraziZivotinju.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmGlavna.resx">
       <DependentUpon>FrmGlavna.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Zivotinje\UCObrisiZivotinju.resx">
       <DependentUpon>UCObrisiZivotinju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Zivotinje\UCPretraziZivotinju.resx">
+      <DependentUpon>UCPretraziZivotinju.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

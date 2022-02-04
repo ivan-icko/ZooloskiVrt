@@ -16,17 +16,14 @@ namespace ZooloskiVrt.Server.Repozitorujum
         {
             broker.Commit();
         }
-
         public void Rollback()
         {
             broker.Rollback();
         }
-
         public void ZapocniTransakciju()
         {
             broker.ZapocniTransakciju();
         }
-
         public void ZatvoriKonekciju()
         {
             broker.ZatvoriKonekciju();
@@ -35,6 +32,10 @@ namespace ZooloskiVrt.Server.Repozitorujum
         {
             broker.OtvoriKonekciju();
         }
+
+
+
+
 
         public void Sacuvaj(IDomenskiObjekat obj)
         {
@@ -66,15 +67,25 @@ namespace ZooloskiVrt.Server.Repozitorujum
             return rez;
         }
 
-        public List<IDomenskiObjekat> Pretrazi(string uslov)
+        public List<IDomenskiObjekat> Pretrazi(IDomenskiObjekat o, string uslov)
         {
-            throw new NotImplementedException();
+            SqlCommand command = broker.KreirajKomandu();
+            command.CommandText = $"select * from {o.NazivTabele} where {uslov}";
+            List<IDomenskiObjekat> obj1 = new List<IDomenskiObjekat>() ;
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    obj1.Add(o.ProcitajRed(reader));
+                }
+            }
+            return obj1.Count!=0?obj1:null;
         }
 
         public void Obrisi(IDomenskiObjekat t)
         {
             SqlCommand command = broker.KreirajKomandu();
-            command.CommandText = $"delete from {t.NazivTabele} where {t.IdKolona}={t.Id}";
+            command.CommandText = $"delete from {t.NazivTabele} where ";
             command.ExecuteNonQuery();
         }
 

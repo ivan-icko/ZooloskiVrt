@@ -12,9 +12,8 @@ namespace ZooloskiVrt.Common.Domen
         string NazivTabele { get; }
         string Vrednosti { get; }
         string Kolone { get; }
-        string Uslov { get; }
-        string IdKolona { get; }
-        int Id { get; }
+        string Uslov { get; set; }
+        
 
         IDomenskiObjekat ProcitajRed(SqlDataReader rezultat);
     }
