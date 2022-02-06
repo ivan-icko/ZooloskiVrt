@@ -26,7 +26,6 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             uc.CmbTipIshrane.DataSource = Enum.GetValues(typeof(TipIshrane));
             OsveziDgv(uc);
             uc.BtnDodaj.Click += BtnDodaj_Click;
-
         }
 
         private void OsveziDgv(UCDodajZivotinju uc)
@@ -48,11 +47,10 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private void NapuniZivotinju(UCDodajZivotinju uc)
         {
-            
-            zivotinja.Pol = ((Pol)uc.CmbPol.SelectedItem).ToString();
+            zivotinja.Pol = (Pol)uc.CmbPol.SelectedItem;
             zivotinja.Staniste = uc.TxtStaniste.Text;
             zivotinja.Starost = int.Parse(uc.TxtStarost.Text);
-            zivotinja.TipIshrane = ((TipIshrane)uc.CmbTipIshrane.SelectedItem).ToString();
+            zivotinja.TipIshrane = (TipIshrane)uc.CmbTipIshrane.SelectedItem;
             zivotinja.Vrsta = uc.TxtVrsta.Text;
         }
 
@@ -67,7 +65,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             }
             else if(!int.TryParse(uCDodajZivotinju.TxtStarost.Text,out int starost))
             {
-                System.Windows.Forms.MessageBox.Show("Starost mora biti broj");
+                System.Windows.Forms.MessageBox.Show("Starost mora biti ceo broj");
                 return false;
             }
             return true;

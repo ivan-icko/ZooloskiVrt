@@ -38,7 +38,6 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             {
                 return;
             }       
-            
             List<Zivotinja> pronedjene=Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.PronadjiZivotinje,z.Uslov);
             if (pronedjene == null)
             {
@@ -61,8 +60,6 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Starost mora biti ceo broj");
                 return false;
             }
-            
-
             string pol = ((Pol)uc.CmbPol.SelectedItem).ToString();
             string tipIshrane = ((TipIshrane)uc.CmbTipIshrane.SelectedItem).ToString();
             string vrsta = uc.TxtVrsta.Text;

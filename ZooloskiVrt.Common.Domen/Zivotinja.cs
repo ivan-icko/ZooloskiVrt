@@ -13,17 +13,17 @@ namespace ZooloskiVrt.Common.Domen
     {
         public int IdZivotinje { get; set; }
         public string Vrsta { get; set; }
-        public string Pol { get; set; }
+        public Pol Pol { get; set; }
         public int Starost { get; set; }
         public string Staniste { get; set; }
-        public string TipIshrane { get; set; }
+        public TipIshrane TipIshrane { get; set; }
 
         public Zivotinja() { }
 
         [Browsable(false)]
         public string NazivTabele => "Zivotinja";
         [Browsable(false)]
-        public string Vrednosti => $"'{Vrsta}','{Pol}',{Starost},'{Staniste}','{TipIshrane}'";
+        public string Vrednosti => $"'{Vrsta}','{Pol.ToString()}',{Starost},'{Staniste}','{TipIshrane}'";
         [Browsable(false)]
         public string Uslov {get;set;}
         [Browsable(false)]
@@ -47,10 +47,10 @@ namespace ZooloskiVrt.Common.Domen
             {
                 IdZivotinje = (int)reader["IdZivotinje"],
                 Vrsta = (string)reader["Vrsta"],
-                Pol = (string)reader["Pol"],
+                Pol = (Pol)Enum.Parse(typeof(Pol),(string)reader["Pol"]),
                 Starost = (int)reader["Starost"],
                 Staniste = (string)reader["Staniste"],
-                TipIshrane = (string)reader["TipIshrane"]
+                TipIshrane = (TipIshrane)Enum.Parse(typeof(TipIshrane), (string)reader["TipIshrane"])
             };
             return z;
         }
