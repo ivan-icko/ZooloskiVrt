@@ -14,6 +14,7 @@ namespace ZooloskiVrt.Common.Komunikacija
         DodajZivotinju,
         VratiSveZivotinje,
         ObrisiZivotinju,
-        PronadjiZivotinje
+        PronadjiZivotinje,
+        AzurirajZivotinju
     }
 }

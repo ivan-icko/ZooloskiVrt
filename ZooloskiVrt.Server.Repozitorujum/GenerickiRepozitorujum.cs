@@ -47,7 +47,7 @@ namespace ZooloskiVrt.Server.Repozitorujum
         public void Azuriraj(IDomenskiObjekat obj)
         {
             SqlCommand command = broker.KreirajKomandu();
-            command.CommandText = $"update {obj.NazivTabele} set ({obj.Vrednosti}) where";
+            command.CommandText = $"update {obj.NazivTabele} set {obj.Azuriranje} where {obj.Uslov}";
             command.ExecuteNonQuery();
         }
 
@@ -67,10 +67,10 @@ namespace ZooloskiVrt.Server.Repozitorujum
             return rez;
         }
 
-        public List<IDomenskiObjekat> Pretrazi(IDomenskiObjekat o, string uslov)
+        public List<IDomenskiObjekat> Pretrazi(IDomenskiObjekat o)
         {
             SqlCommand command = broker.KreirajKomandu();
-            command.CommandText = $"select * from {o.NazivTabele} where {uslov}";
+            command.CommandText = $"select * from {o.NazivTabele} where {o.Uslov}";
             List<IDomenskiObjekat> obj1 = new List<IDomenskiObjekat>() ;
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -85,7 +85,7 @@ namespace ZooloskiVrt.Server.Repozitorujum
         public void Obrisi(IDomenskiObjekat t)
         {
             SqlCommand command = broker.KreirajKomandu();
-            command.CommandText = $"delete from {t.NazivTabele} where ";
+            command.CommandText = $"delete from {t.NazivTabele} where {t.Uslov}";
             command.ExecuteNonQuery();
         }
 

@@ -38,11 +38,17 @@ namespace ZooloskiVrt.Klijent.Forme
 
       
 
+
         public Izlaz ZahtevajIVratiRezultat<Izlaz>(Operacija op, object o=null) where Izlaz : class
         {
             Zahtevaj(op, o);
             return VratiRezultat<Izlaz>();
         }
+
+
+
+
+
         public void ZahtevajBezVracanja(Operacija operacija,object o)
         {
             Zahtevaj(operacija, o);

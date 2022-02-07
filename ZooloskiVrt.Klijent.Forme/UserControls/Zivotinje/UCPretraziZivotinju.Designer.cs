@@ -44,6 +44,12 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
             this.cmbPol = new System.Windows.Forms.ComboBox();
             this.cmbTipIshrane = new System.Windows.Forms.ComboBox();
             this.gbPretraga = new System.Windows.Forms.GroupBox();
+            this.btnAzuriraj = new System.Windows.Forms.Button();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.btnPrikaziSve = new System.Windows.Forms.Button();
+            this.btnObrisi = new System.Windows.Forms.Button();
+            this.txtId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPretrazi)).BeginInit();
             this.gbPretraga.SuspendLayout();
             this.SuspendLayout();
@@ -51,17 +57,17 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
             // dgvPretrazi
             // 
             this.dgvPretrazi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPretrazi.Location = new System.Drawing.Point(372, 33);
+            this.dgvPretrazi.Location = new System.Drawing.Point(411, 33);
             this.dgvPretrazi.Name = "dgvPretrazi";
             this.dgvPretrazi.RowHeadersWidth = 51;
-            this.dgvPretrazi.Size = new System.Drawing.Size(527, 150);
+            this.dgvPretrazi.Size = new System.Drawing.Size(683, 394);
             this.dgvPretrazi.TabIndex = 0;
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(60, 291);
+            this.btnPretrazi.Location = new System.Drawing.Point(60, 271);
             this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(199, 43);
+            this.btnPretrazi.Size = new System.Drawing.Size(199, 48);
             this.btnPretrazi.TabIndex = 1;
             this.btnPretrazi.Text = "Pretrazi";
             this.btnPretrazi.UseVisualStyleBackColor = true;
@@ -150,6 +156,9 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
             // 
             // gbPretraga
             // 
+            this.gbPretraga.Controls.Add(this.txtId);
+            this.gbPretraga.Controls.Add(this.btnAzuriraj);
+            this.gbPretraga.Controls.Add(this.btnDodaj);
             this.gbPretraga.Controls.Add(this.btnPretrazi);
             this.gbPretraga.Controls.Add(this.cmbTipIshrane);
             this.gbPretraga.Controls.Add(this.txtVrsta);
@@ -163,19 +172,75 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
             this.gbPretraga.Controls.Add(this.label3);
             this.gbPretraga.Location = new System.Drawing.Point(13, 33);
             this.gbPretraga.Name = "gbPretraga";
-            this.gbPretraga.Size = new System.Drawing.Size(329, 355);
+            this.gbPretraga.Size = new System.Drawing.Size(392, 478);
             this.gbPretraga.TabIndex = 13;
             this.gbPretraga.TabStop = false;
             this.gbPretraga.Text = "Pretraga";
+            // 
+            // btnAzuriraj
+            // 
+            this.btnAzuriraj.Location = new System.Drawing.Point(60, 413);
+            this.btnAzuriraj.Name = "btnAzuriraj";
+            this.btnAzuriraj.Size = new System.Drawing.Size(199, 59);
+            this.btnAzuriraj.TabIndex = 15;
+            this.btnAzuriraj.Text = "Azuriraj";
+            this.btnAzuriraj.UseVisualStyleBackColor = true;
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(60, 341);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(199, 53);
+            this.btnDodaj.TabIndex = 14;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            // 
+            // btnPrikazi
+            // 
+            this.btnPrikazi.Location = new System.Drawing.Point(411, 463);
+            this.btnPrikazi.Name = "btnPrikazi";
+            this.btnPrikazi.Size = new System.Drawing.Size(140, 48);
+            this.btnPrikazi.TabIndex = 15;
+            this.btnPrikazi.Text = "Prikazi izabranu";
+            this.btnPrikazi.UseVisualStyleBackColor = true;
+            // 
+            // btnPrikaziSve
+            // 
+            this.btnPrikaziSve.Location = new System.Drawing.Point(702, 463);
+            this.btnPrikaziSve.Name = "btnPrikaziSve";
+            this.btnPrikaziSve.Size = new System.Drawing.Size(141, 48);
+            this.btnPrikaziSve.TabIndex = 16;
+            this.btnPrikaziSve.Text = "Prikazi sve";
+            this.btnPrikaziSve.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisi
+            // 
+            this.btnObrisi.Location = new System.Drawing.Point(965, 463);
+            this.btnObrisi.Name = "btnObrisi";
+            this.btnObrisi.Size = new System.Drawing.Size(129, 48);
+            this.btnObrisi.TabIndex = 17;
+            this.btnObrisi.Text = "Obrisi";
+            this.btnObrisi.UseVisualStyleBackColor = true;
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(305, 31);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(58, 22);
+            this.txtId.TabIndex = 16;
+            this.txtId.Visible = false;
             // 
             // UCPretraziZivotinju
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnObrisi);
+            this.Controls.Add(this.btnPrikazi);
+            this.Controls.Add(this.btnPrikaziSve);
             this.Controls.Add(this.gbPretraga);
             this.Controls.Add(this.dgvPretrazi);
             this.Name = "UCPretraziZivotinju";
-            this.Size = new System.Drawing.Size(921, 540);
+            this.Size = new System.Drawing.Size(1111, 540);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPretrazi)).EndInit();
             this.gbPretraga.ResumeLayout(false);
             this.gbPretraga.PerformLayout();
@@ -198,6 +263,12 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
         private ComboBox cmbPol;
         private ComboBox cmbTipIshrane;
         private GroupBox gbPretraga;
+        private Button btnPrikazi;
+        private Button btnDodaj;
+        private Button btnPrikaziSve;
+        private Button btnAzuriraj;
+        private Button btnObrisi;
+        private TextBox txtId;
 
         public DataGridView DgvPretrazi { get => dgvPretrazi; set => dgvPretrazi = value; }
         public Button BtnPretrazi { get => btnPretrazi; set => btnPretrazi = value; }
@@ -212,5 +283,11 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
         public ComboBox CmbPol { get => cmbPol; set => cmbPol = value; }
         public ComboBox CmbTipIshrane { get => cmbTipIshrane; set => cmbTipIshrane = value; }
         public GroupBox GbPretraga { get => gbPretraga; set => gbPretraga = value; }
+        public Button BtnPrikazi { get => btnPrikazi; set => btnPrikazi = value; }
+        public Button BtnDodaj { get => btnDodaj; set => btnDodaj = value; }
+        public Button BtnPrikaziSve { get => btnPrikaziSve; set => btnPrikaziSve = value; }
+        public Button BtnAzuriraj { get => btnAzuriraj; set => btnAzuriraj = value; }
+        public Button BtnObrisi { get => btnObrisi; set => btnObrisi = value; }
+        public TextBox TxtId { get => txtId; set => txtId = value; }
     }
 }

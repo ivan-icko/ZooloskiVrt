@@ -55,7 +55,7 @@ namespace ZooloskiVrt.Server.Main
                 switch (zahtev.Operacija)
                 {
                     case Operacija.Prijava:
-                        odgovor.Rezultat = Controller.Instance.PronadjiZaposlenog(zahtev.Objekat as string);
+                        odgovor.Rezultat = Controller.Instance.PronadjiZaposlenog(zahtev.Objekat as Zaposleni);
                         if (odgovor.Rezultat == null)
                         {
                             odgovor.Ok = false;
@@ -72,7 +72,10 @@ namespace ZooloskiVrt.Server.Main
                         Controller.Instance.ObrisiZivotinju(zahtev.Objekat as Zivotinja);
                         break;
                     case Operacija.PronadjiZivotinje:
-                        odgovor.Rezultat=Controller.Instance.PronadjiZivotinje(zahtev.Objekat as string);
+                        odgovor.Rezultat=Controller.Instance.PronadjiZivotinje(zahtev.Objekat as Zivotinja);
+                        break;
+                    case Operacija.AzurirajZivotinju:
+                        Controller.Instance.AzurirajZivotinju(zahtev.Objekat as Zivotinja);
                         break;
                     default:
                         break;

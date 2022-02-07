@@ -16,7 +16,7 @@ namespace ZooloskiVrt.Server.Repozitorujum
         void ZatvoriKonekciju();
 
         List<T> VratiSve(T t);
-        List<T> Pretrazi(T t, string uslov);
+        List<T> Pretrazi(T t);
         void Sacuvaj(T t);
         T IzaberiRed(T t);
         void Azuriraj(T t);

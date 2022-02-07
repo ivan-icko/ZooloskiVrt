@@ -21,7 +21,6 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         public void Inicijalizuj(UCDodajZivotinju uc)
         {
-            
             uc.CmbPol.DataSource = Enum.GetValues(typeof(Pol));
             uc.CmbTipIshrane.DataSource = Enum.GetValues(typeof(TipIshrane));
             OsveziDgv(uc);

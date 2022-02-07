@@ -27,7 +27,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             try
             {
                 Komunikacija.Instance.PoveziSe();
-                Sesija.Instance.Korisnik = Komunikacija.Instance.ZahtevajIVratiRezultat<Zaposleni>(Common.Komunikacija.Operacija.Prijava, korisnik.Uslov);
+                Sesija.Instance.Korisnik = Komunikacija.Instance.ZahtevajIVratiRezultat<Zaposleni>(Common.Komunikacija.Operacija.Prijava, korisnik);
                 if (Sesija.Instance.Korisnik != null)
                 {
                     

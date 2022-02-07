@@ -11,6 +11,7 @@ namespace ZooloskiVrt.Common.Domen
     [Serializable]
     public class Zivotinja : IDomenskiObjekat
     {
+        [Browsable(false)]
         public int IdZivotinje { get; set; }
         public string Vrsta { get; set; }
         public Pol Pol { get; set; }
@@ -23,22 +24,24 @@ namespace ZooloskiVrt.Common.Domen
         [Browsable(false)]
         public string NazivTabele => "Zivotinja";
         [Browsable(false)]
-        public string Vrednosti => $"'{Vrsta}','{Pol.ToString()}',{Starost},'{Staniste}','{TipIshrane}'";
+        public string Vrednosti => $"'{Vrsta}','{Pol}',{Starost},'{Staniste}','{TipIshrane}'";
         [Browsable(false)]
         public string Uslov {get;set;}
         [Browsable(false)]
         public string Kolone => "(Vrsta,Pol,Starost,Staniste,TipIshrane)";
-      
+        [Browsable(false)]
+        public string Azuriranje => $"Vrsta='{Vrsta}',Pol='{Pol}',Starost={Starost},Staniste='{Staniste}',TipIshrane='{TipIshrane}'";
 
-        
 
-        public Zivotinja(string vrsta,string pol, string starost, string staniste, string tipIshrane)
+
+        public Zivotinja(string id,string vrsta,string pol, string starost, string staniste, string tipIshrane)
         {
+            if (string.IsNullOrEmpty(id)) { id = "%"; }
             if (string.IsNullOrEmpty(vrsta)) { vrsta = "%"; }
             if (string.IsNullOrEmpty(starost)) { starost = "%"; }
             if (string.IsNullOrEmpty(staniste)) { staniste = "%"; }
             if (string.IsNullOrEmpty(tipIshrane)) { tipIshrane = "%"; }
-            this.Uslov = $"Vrsta like '{vrsta}' and pol like '{pol}' and cast(Starost as nvarchar(10)) like '{starost}' and Staniste like '{staniste}' and TipIshrane like '{tipIshrane}'";
+            this.Uslov = $"cast(IdZivotinje as nvarchar(10)) like '{id}' and Vrsta like '{vrsta}' and pol like '{pol}' and cast(Starost as nvarchar(10)) like '{starost}' and Staniste like '{staniste}' and TipIshrane like '{tipIshrane}'";
         }
         
         public IDomenskiObjekat ProcitajRed(SqlDataReader reader)

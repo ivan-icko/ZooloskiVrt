@@ -47,18 +47,24 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             so.IzvrsiTemplejt();
         }
 
-        public List<Zivotinja> PronadjiZivotinje(string z)
+        public List<Zivotinja> PronadjiZivotinje(Zivotinja z)
         {
             OpstaSistemskaOperacija so = new PronadjiZivotinjuSO(z);
             so.IzvrsiTemplejt();
             return ((PronadjiZivotinjuSO)so).Zivotinje;
         }
 
-        public object PronadjiZaposlenog(string v)
+        public Zaposleni PronadjiZaposlenog(Zaposleni z)
         {
-            OpstaSistemskaOperacija so = new PretragaZaposlenogSO(v);
+            OpstaSistemskaOperacija so = new PretragaZaposlenogSO(z);
             so.IzvrsiTemplejt();
             return ((PretragaZaposlenogSO)so).Zaposleni;
+        }
+
+        public void AzurirajZivotinju(Zivotinja z)
+        {
+            OpstaSistemskaOperacija so = new AzurirajZivotinjuSO(z);
+            so.IzvrsiTemplejt();
         }
     }
 }

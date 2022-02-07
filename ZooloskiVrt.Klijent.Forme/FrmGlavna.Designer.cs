@@ -35,8 +35,8 @@ namespace ZooloskiVrt.Klijent.Forme
             this.zivotinjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obrisiZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlMain = new System.Windows.Forms.Panel();
             this.pretraziZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,43 +65,43 @@ namespace ZooloskiVrt.Klijent.Forme
             this.obrisiZivotinjuToolStripMenuItem,
             this.pretraziZivotinjuToolStripMenuItem});
             this.zivotinjeToolStripMenuItem.Name = "zivotinjeToolStripMenuItem";
-            this.zivotinjeToolStripMenuItem.Size = new System.Drawing.Size(143, 24);
+            this.zivotinjeToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.zivotinjeToolStripMenuItem.Text = "Zivotinje";
             // 
             // dodajZivotinjuToolStripMenuItem
             // 
             this.dodajZivotinjuToolStripMenuItem.Name = "dodajZivotinjuToolStripMenuItem";
-            this.dodajZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dodajZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
             this.dodajZivotinjuToolStripMenuItem.Text = "Dodaj zivotinju";
             this.dodajZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.dodajZivotinjuToolStripMenuItem_Click);
             // 
             // obrisiZivotinjuToolStripMenuItem
             // 
             this.obrisiZivotinjuToolStripMenuItem.Name = "obrisiZivotinjuToolStripMenuItem";
-            this.obrisiZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.obrisiZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
             this.obrisiZivotinjuToolStripMenuItem.Text = "Obrisi zivotinju";
             this.obrisiZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.obrisiZivotinjuToolStripMenuItem_Click);
+            // 
+            // pretraziZivotinjuToolStripMenuItem
+            // 
+            this.pretraziZivotinjuToolStripMenuItem.Name = "pretraziZivotinjuToolStripMenuItem";
+            this.pretraziZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
+            this.pretraziZivotinjuToolStripMenuItem.Text = "Pretrazi zivotinju";
+            this.pretraziZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.pretraziZivotinjuToolStripMenuItem_Click);
             // 
             // pnlMain
             // 
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(87, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(865, 565);
+            this.pnlMain.Size = new System.Drawing.Size(1309, 565);
             this.pnlMain.TabIndex = 2;
-            // 
-            // pretraziZivotinjuToolStripMenuItem
-            // 
-            this.pretraziZivotinjuToolStripMenuItem.Name = "pretraziZivotinjuToolStripMenuItem";
-            this.pretraziZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.pretraziZivotinjuToolStripMenuItem.Text = "Pretrazi zivotinju";
-            this.pretraziZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.pretraziZivotinjuToolStripMenuItem_Click);
             // 
             // FrmGlavna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 565);
+            this.ClientSize = new System.Drawing.Size(1396, 565);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

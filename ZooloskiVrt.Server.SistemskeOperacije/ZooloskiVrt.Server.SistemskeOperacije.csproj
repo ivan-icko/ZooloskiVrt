@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzurirajZivotinjuSO.cs" />
     <Compile Include="KreirajZivotinjuSO.cs" />
     <Compile Include="ObrisiZivotinjuSO.cs" />
     <Compile Include="OpstaSistemskaOperacija.cs" />
