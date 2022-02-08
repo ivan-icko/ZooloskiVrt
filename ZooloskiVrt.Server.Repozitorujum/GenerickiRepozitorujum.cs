@@ -55,7 +55,7 @@ namespace ZooloskiVrt.Server.Repozitorujum
         {
             List<IDomenskiObjekat> rez = new List<IDomenskiObjekat>();
             SqlCommand command = broker.KreirajKomandu();
-            command.CommandText = $"SELECT * FROM {t.NazivTabele}";
+            command.CommandText = $"SELECT * FROM {t.NazivTabele} {t.JoinUslov} {t.Uslov}";
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())

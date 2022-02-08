@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZooloskiVrt.Klijent.Forme.UserControls.Paketi;
 using ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje;
 
 namespace ZooloskiVrt.Klijent.Forme
@@ -36,10 +37,18 @@ namespace ZooloskiVrt.Klijent.Forme
 
         private void pretraziZivotinjuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UCPretraziZivotinju UcPretrazi = new UCPretraziZivotinju();
+            UCZivotinje UcPretrazi = new UCZivotinje();
             UcPretrazi.Dock = DockStyle.Fill;
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(UcPretrazi);
+        }
+
+        private void paketiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UCPaketi uc = new UCPaketi(pnlMain);
+            uc.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(uc);
         }
     }
 }

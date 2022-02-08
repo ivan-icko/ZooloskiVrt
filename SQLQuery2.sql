@@ -1,0 +1,1 @@
+﻿update Zivotinja set pol='Muski' where cast(IdZivotinje as nvarchar(10)) like '3002' and Vrsta like 'Neka' and pol like 'Muski' and cast(Starost as nvarchar(10)) like '33' and Staniste like 'Neko' and TipIshrane like 'Biljojed'

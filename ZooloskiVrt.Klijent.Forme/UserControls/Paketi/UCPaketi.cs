@@ -7,20 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZooloskiVrt.Common.Domen;
 using ZooloskiVrt.Klijent.Forme.GUIController;
 
-namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
+namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
 {
-    public partial class UCPretraziZivotinju : UserControl
+    public partial class UCPaketi : UserControl
     {
-        PretraziZIvotinjuKontroler kontroler;
-        public UCPretraziZivotinju()
+        PaketiKontroler kontroler;
+        private Panel pnlMain;
+        public UCPaketi(Panel pnlMain)
         {
             InitializeComponent();
-            kontroler = new PretraziZIvotinjuKontroler(this);
+            this.pnlMain = pnlMain;
+            kontroler = new PaketiKontroler(this,pnlMain);
             kontroler.Inicijalizuj();
         }
 
-       
+      
     }
 }

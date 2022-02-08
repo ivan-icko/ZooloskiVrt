@@ -66,5 +66,25 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             OpstaSistemskaOperacija so = new AzurirajZivotinjuSO(z);
             so.IzvrsiTemplejt();
         }
+
+        public void DodajPaket(Paket p)
+        {
+            OpstaSistemskaOperacija so = new KreirajPaketSO(p);
+            so.IzvrsiTemplejt();
+        }
+
+        public object VratiSvePakete()
+        {
+            OpstaSistemskaOperacija so = new VratiListuPaketaSO();
+            so.IzvrsiTemplejt();
+            return ((VratiListuPaketaSO)so).Paketi;
+        }
+
+        public object VratiZivotinjeZaPakete(Zivotinja zivotinja)
+        {
+            OpstaSistemskaOperacija so = new VratiZivotinjeZaPaketeSO(zivotinja);
+            so.IzvrsiTemplejt();
+            return ((VratiZivotinjeZaPaketeSO)so).Zivotinje;
+        }
     }
 }

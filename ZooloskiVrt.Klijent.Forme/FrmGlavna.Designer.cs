@@ -36,6 +36,8 @@ namespace ZooloskiVrt.Klijent.Forme
             this.dodajZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obrisiZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretraziZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paketiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.posetiociToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -48,13 +50,14 @@ namespace ZooloskiVrt.Klijent.Forme
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zivotinjeToolStripMenuItem});
+            this.zivotinjeToolStripMenuItem,
+            this.paketiToolStripMenuItem,
+            this.posetiociToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(87, 565);
+            this.menuStrip1.Size = new System.Drawing.Size(1396, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,48 +68,61 @@ namespace ZooloskiVrt.Klijent.Forme
             this.obrisiZivotinjuToolStripMenuItem,
             this.pretraziZivotinjuToolStripMenuItem});
             this.zivotinjeToolStripMenuItem.Name = "zivotinjeToolStripMenuItem";
-            this.zivotinjeToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.zivotinjeToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.zivotinjeToolStripMenuItem.Text = "Zivotinje";
             // 
             // dodajZivotinjuToolStripMenuItem
             // 
             this.dodajZivotinjuToolStripMenuItem.Name = "dodajZivotinjuToolStripMenuItem";
-            this.dodajZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
+            this.dodajZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dodajZivotinjuToolStripMenuItem.Text = "Dodaj zivotinju";
             this.dodajZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.dodajZivotinjuToolStripMenuItem_Click);
             // 
             // obrisiZivotinjuToolStripMenuItem
             // 
             this.obrisiZivotinjuToolStripMenuItem.Name = "obrisiZivotinjuToolStripMenuItem";
-            this.obrisiZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
+            this.obrisiZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.obrisiZivotinjuToolStripMenuItem.Text = "Obrisi zivotinju";
             this.obrisiZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.obrisiZivotinjuToolStripMenuItem_Click);
             // 
             // pretraziZivotinjuToolStripMenuItem
             // 
             this.pretraziZivotinjuToolStripMenuItem.Name = "pretraziZivotinjuToolStripMenuItem";
-            this.pretraziZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
+            this.pretraziZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pretraziZivotinjuToolStripMenuItem.Text = "Pretrazi zivotinju";
             this.pretraziZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.pretraziZivotinjuToolStripMenuItem_Click);
+            // 
+            // paketiToolStripMenuItem
+            // 
+            this.paketiToolStripMenuItem.Name = "paketiToolStripMenuItem";
+            this.paketiToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.paketiToolStripMenuItem.Text = "Paketi";
+            this.paketiToolStripMenuItem.Click += new System.EventHandler(this.paketiToolStripMenuItem_Click);
+            // 
+            // posetiociToolStripMenuItem
+            // 
+            this.posetiociToolStripMenuItem.Name = "posetiociToolStripMenuItem";
+            this.posetiociToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.posetiociToolStripMenuItem.Text = "Posetioci";
             // 
             // pnlMain
             // 
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(87, 0);
+            this.pnlMain.Location = new System.Drawing.Point(0, 28);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1309, 565);
+            this.pnlMain.Size = new System.Drawing.Size(1396, 652);
             this.pnlMain.TabIndex = 2;
             // 
             // FrmGlavna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1396, 565);
+            this.ClientSize = new System.Drawing.Size(1396, 680);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmGlavna";
-            this.Text = "FrmGlavna";
+            this.Text = "Zivotinje";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -123,5 +139,7 @@ namespace ZooloskiVrt.Klijent.Forme
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.ToolStripMenuItem obrisiZivotinjuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretraziZivotinjuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem paketiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem posetiociToolStripMenuItem;
     }
 }

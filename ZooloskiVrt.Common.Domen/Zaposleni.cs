@@ -30,6 +30,8 @@ namespace ZooloskiVrt.Common.Domen
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Azuriranje { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        public string JoinUslov { get; set; }
+
         public Zaposleni(string ime, string prezime, string korisnickoIme, string sifra)
         {
             if (string.IsNullOrEmpty(ime)) { ime = "%"; }
