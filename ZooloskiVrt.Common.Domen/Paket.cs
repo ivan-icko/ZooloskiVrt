@@ -31,9 +31,9 @@ namespace ZooloskiVrt.Common.Domen
         [Browsable(false)]
         public string Uslov { get; set; }
         [Browsable(false)]
-        public string Azuriranje => throw new NotImplementedException();
+        public string Azuriranje => $"NazivPaketa='{NazivPaketa}', Cena={Cena}, DatumDo='{DatumDo}'";
         [Browsable(false)]
-        public string JoinUslov { get; set; }
+        public string JoinUslov { get; set;}
 
         public IDomenskiObjekat ProcitajRed(SqlDataReader reader)
         {
@@ -54,7 +54,7 @@ namespace ZooloskiVrt.Common.Domen
             if (string.IsNullOrEmpty(cena)) { cena = "%"; }
             if (string.IsNullOrEmpty(datumDo)) {datumDo = "%"; }
           
-            this.Uslov = $"cast(IdPaketa as nvarchar(10)) like '{id}' and NazivPaketa like '{nazivPaketa}' cast(Cena as float) like '{cena}' and DatumDo like '{datumDo}'";
+            this.Uslov = $"cast(IdPaketa as nvarchar(10)) like '{id}' and NazivPaketa like '{nazivPaketa}' and cast(Cena as float) like '{cena}' and DatumDo like '{datumDo}'";
         }
     }
 }

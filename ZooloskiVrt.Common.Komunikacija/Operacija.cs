@@ -18,6 +18,8 @@ namespace ZooloskiVrt.Common.Komunikacija
         AzurirajZivotinju,
         DodajPaket,
         VratiSvePakete,
-        VratiZIvotinjeZaPakete
+        VratiZIvotinjeZaPakete,
+        AzurirajPaket,
+        PronadjiPakete
     }
 }

@@ -15,10 +15,10 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
     {
         DodajZivotinjuUPaketKontroler kontroler;
 
-        public UCDodajZivotinjuUPaket()
+        public UCDodajZivotinjuUPaket(int idPaketa)
         {
             InitializeComponent();
-            kontroler = new DodajZivotinjuUPaketKontroler(this);
+            kontroler = new DodajZivotinjuUPaketKontroler(this,idPaketa);
             kontroler.Inicijalizuj();
         }
     }

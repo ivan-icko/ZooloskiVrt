@@ -86,6 +86,12 @@ namespace ZooloskiVrt.Server.Main
                     case Operacija.VratiZIvotinjeZaPakete:
                         odgovor.Rezultat = Controller.Instance.VratiZivotinjeZaPakete(zahtev.Objekat as Zivotinja);
                         break;
+                    case Operacija.AzurirajPaket:
+                        Controller.Instance.AzurirajPaket(zahtev.Objekat as Paket);
+                        break;
+                    case Operacija.PronadjiPakete:
+                        odgovor.Rezultat = Controller.Instance.PronadjiPakete(zahtev.Objekat as Paket);
+                        break;
                     default:
                         break;
                 }

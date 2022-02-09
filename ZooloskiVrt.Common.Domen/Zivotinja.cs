@@ -61,5 +61,11 @@ namespace ZooloskiVrt.Common.Domen
             };
             return z;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Zivotinja zivotinja &&
+                   IdZivotinje == zivotinja.IdZivotinje;
+        }
     }
 }
