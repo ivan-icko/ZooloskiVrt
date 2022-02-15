@@ -1,0 +1,1 @@
+﻿update Zivotinja set OznakaZivotinje=3,Vrsta='Tigarr',Pol='Muski',Starost=123,Staniste='Afrika',TipIshrane='Mesojed' where cast(IdZivotinje as nvarchar(10)) like '7008' and cast(OznakaZivotinje as nvarchar(10)) like '3' and Vrsta like 'Lav' and pol like 'Muski' and cast(Starost as nvarchar(10)) like '55' and Staniste like 'Afrika' and TipIshrane like 'Mesojed'

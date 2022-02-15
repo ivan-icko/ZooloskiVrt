@@ -50,6 +50,8 @@
     <Compile Include="GUIController\ObrisiZivotinjuKontroler.cs" />
     <Compile Include="GUIController\PaketiKontroler.cs" />
     <Compile Include="GUIController\PretraziZIvotinjuKontroler.cs" />
+    <Compile Include="GUIController\PrijaviPosetioceNaPaketeKontroler.cs" />
+    <Compile Include="GUIController\PrikaziPrijaveKontroler.cs" />
     <Compile Include="Komunikacija.cs" />
     <Compile Include="FrmGlavna.cs">
       <SubType>Form</SubType>
@@ -79,6 +81,18 @@
     </Compile>
     <Compile Include="UserControls\Paketi\UCPaketi.Designer.cs">
       <DependentUpon>UCPaketi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Posetioci\UCPosetioci.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Posetioci\UCPosetioci.Designer.cs">
+      <DependentUpon>UCPosetioci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Posetioci\UCPrikaziPrijave.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Posetioci\UCPrikaziPrijave.Designer.cs">
+      <DependentUpon>UCPrikaziPrijave.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Zivotinje\UCDodajZivotinju.cs">
       <SubType>UserControl</SubType>
@@ -118,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Paketi\UCPaketi.resx">
       <DependentUpon>UCPaketi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Posetioci\UCPosetioci.resx">
+      <DependentUpon>UCPosetioci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Posetioci\UCPrikaziPrijave.resx">
+      <DependentUpon>UCPrikaziPrijave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Zivotinje\UCDodajZivotinju.resx">
       <DependentUpon>UCDodajZivotinju.cs</DependentUpon>

@@ -226,7 +226,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
             // txtId
             // 
             this.txtId.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtId.Location = new System.Drawing.Point(305, 31);
+            this.txtId.Location = new System.Drawing.Point(292, 43);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(58, 22);
             this.txtId.TabIndex = 16;
@@ -282,7 +282,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
             this.btnObrisi.Text = "Obrisi";
             this.btnObrisi.UseVisualStyleBackColor = true;
             // 
-            // UCPretraziZivotinju
+            // UCZivotinje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,7 +291,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
             this.Controls.Add(this.btnPrikaziSve);
             this.Controls.Add(this.gbPretraga);
             this.Controls.Add(this.dgvPretrazi);
-            this.Name = "UCPretraziZivotinju";
+            this.Name = "UCZivotinje";
             this.Size = new System.Drawing.Size(1313, 540);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPretrazi)).EndInit();
             this.gbPretraga.ResumeLayout(false);

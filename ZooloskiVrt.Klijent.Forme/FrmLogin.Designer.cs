@@ -80,6 +80,7 @@ namespace ZooloskiVrt.Klijent.Forme
             // 
             this.txtSifra.Location = new System.Drawing.Point(175, 85);
             this.txtSifra.Name = "txtSifra";
+            this.txtSifra.PasswordChar = '*';
             this.txtSifra.Size = new System.Drawing.Size(100, 22);
             this.txtSifra.TabIndex = 4;
             this.txtSifra.Text = "a";
@@ -105,7 +106,7 @@ namespace ZooloskiVrt.Klijent.Forme
             this.ClientSize = new System.Drawing.Size(423, 262);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmLogin";
-            this.Text = "Form1";
+            this.Text = "Prijava";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -27,7 +27,6 @@ namespace ZooloskiVrt.Common.Domen
         [Browsable(false)]
         public string Kolone =>"(Ime,Prezime,KorisnickoIme,Sifra)";
 
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Azuriranje { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public string JoinUslov { get; set; }

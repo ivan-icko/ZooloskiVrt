@@ -15,6 +15,8 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
         Zivotinja z=new Zivotinja();
         Zivotinja selektovanaZivotinja = new Zivotinja();
 
+
+
         public PretraziZIvotinjuKontroler(UCZivotinje uc)
         {
             this.uc = uc;
@@ -35,7 +37,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private void BtnOcistiPretragu_Click(object sender, EventArgs e)
         {
-            uc.TxtId.Text = "";
+            //uc.TxtId.Text = "";
             uc.TxtStaniste.Text = "";
             uc.TxtStarost.Text = "";
             uc.TxtVrsta.Text = "";
@@ -59,9 +61,9 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 }
             }
 
-            Zivotinja ziv = new Zivotinja(selektovanaZivotinja.IdZivotinje.ToString(), selektovanaZivotinja.OznakaZivotinje.ToString(),selektovanaZivotinja.Vrsta,selektovanaZivotinja.Pol.ToString(),selektovanaZivotinja.Starost.ToString(),selektovanaZivotinja.Staniste,selektovanaZivotinja.TipIshrane.ToString());
-
-            ziv.IdZivotinje = int.Parse(uc.TxtId.Text);
+            Zivotinja ziv = new Zivotinja(selektovanaZivotinja.IdZivotinje.ToString(),null,null,null,null,null,null);
+            
+            ziv.IdZivotinje = selektovanaZivotinja.IdZivotinje;
             ziv.OznakaZivotinje = int.Parse(uc.TxtOznakaJedinke.Text);
             ziv.Vrsta = uc.TxtVrsta.Text;
             ziv.Pol = (Pol)uc.CmbPol.SelectedItem;
@@ -79,12 +81,13 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
         {
             if (Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiSveZivotinje).Count(a => a.OznakaZivotinje.ToString() == uc.TxtOznakaJedinke.Text && a.Vrsta == selektovanaZivotinja.Vrsta) >= 1)
             {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da zapamti zivotinju","Unos zivotinje",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show($"Vec postoji {uc.TxtVrsta.Text} sa takvom oznakom");
                 return false;
             }
             return true;
         }
-
+            
         private void BtnObrisi_Click(object sender, EventArgs e)
         {
             if (uc.DgvPretrazi.SelectedRows.Count == 0)
@@ -113,7 +116,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private void NapuniPretragu(Zivotinja z)
         {
-            uc.TxtId.Text = z.IdZivotinje.ToString();
+            //uc.TxtId.Text = z.IdZivotinje.ToString();
             uc.TxtOznakaJedinke.Text = z.OznakaZivotinje.ToString();
             uc.TxtVrsta.Text = z.Vrsta.ToString();
             uc.TxtStarost.Text = z.Starost.ToString();
@@ -208,7 +211,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private bool Validacija()
         {
-            if(!int.TryParse(uc.TxtOznakaJedinke.Text,out int oznakaZivotinje) || (!int.TryParse(uc.TxtStarost.Text,out int starost) && !string.IsNullOrEmpty(uc.TxtStarost.Text)))
+            if((!int.TryParse(uc.TxtOznakaJedinke.Text,out int oznakaZivotinje) && !string.IsNullOrEmpty(uc.TxtOznakaJedinke.Text)) || (!int.TryParse(uc.TxtStarost.Text,out int starost) && !string.IsNullOrEmpty(uc.TxtStarost.Text)))
             {
                 System.Windows.Forms.MessageBox.Show("Starost mora biti ceo broj");
                 return false;

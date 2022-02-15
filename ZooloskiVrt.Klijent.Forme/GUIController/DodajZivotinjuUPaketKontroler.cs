@@ -25,8 +25,31 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         public void Inicijalizuj()
         {
+            NapuniDgv();
+            uc.BtnDodaj.Click += BtnDodaj_Click;
+        }
+
+        private void BtnDodaj_Click(object sender, EventArgs e)
+        {
+            if (uc.DgvZivotinje.SelectedRows.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Niste izabrali zivotinju za dodavanje");
+                return;
+            }
+            int IdZivotinje = (uc.DgvZivotinje.SelectedRows[0].DataBoundItem as Zivotinja).IdZivotinje;
+
+            PaketZivotinja pz = new PaketZivotinja() { IdZivotinje = IdZivotinje, IdPaketa = idPaketa };
+            Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajZivotinjuUPaket,pz);
+            NapuniDgv();
+            System.Windows.Forms.MessageBox.Show("Uspesno ste dodali zivotinju u paket","Dodavanje zivotinje",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Information);
+        }
+
+        
+
+        private void NapuniDgv()
+        {
             sveZivotinje = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiSveZivotinje);
-            zivotinjeUPaketu = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiZIvotinjeZaPakete, new Zivotinja() { JoinUslov = "join PaketZivotinja on Zivotinja.IdZivotinje=PaketZivotinja.IdZivotinje", Uslov = $"where PaketZivotinja.IdPaketa={idPaketa}"});
+            zivotinjeUPaketu = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiZIvotinjeZaPakete, new Zivotinja() { JoinUslov = "join PaketZivotinja on Zivotinja.IdZivotinje=PaketZivotinja.IdZivotinje", Uslov = $"where PaketZivotinja.IdPaketa={idPaketa}" });
 
             zivotinjeZaDodavanje = sveZivotinje.Where(x => !zivotinjeUPaketu.Contains(x)).ToList();
 

@@ -34,9 +34,6 @@ namespace ZooloskiVrt.Server.Repozitorujum
         }
 
 
-
-
-
         public void Sacuvaj(IDomenskiObjekat obj)
         {
             SqlCommand command = broker.KreirajKomandu();

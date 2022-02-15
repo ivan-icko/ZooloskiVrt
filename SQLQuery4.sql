@@ -1,0 +1,1 @@
+﻿select * from Paket where DatumDo like '2012-12-12'

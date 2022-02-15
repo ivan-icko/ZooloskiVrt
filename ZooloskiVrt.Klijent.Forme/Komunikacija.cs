@@ -85,7 +85,8 @@ namespace ZooloskiVrt.Klijent.Forme
             }
             catch (IOException ex)
             {
-                throw new Exception(ex.Message);
+                System.Windows.Forms.MessageBox.Show("Greka pri komunikaciji sa serverom","Greska",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error);
+                Environment.Exit(0);
             }
         }
 

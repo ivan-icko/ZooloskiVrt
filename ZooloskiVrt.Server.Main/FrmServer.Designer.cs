@@ -85,6 +85,7 @@ namespace ZooloskiVrt.Server.Main
             this.Controls.Add(this.label1);
             this.Name = "FrmServer";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmServer_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

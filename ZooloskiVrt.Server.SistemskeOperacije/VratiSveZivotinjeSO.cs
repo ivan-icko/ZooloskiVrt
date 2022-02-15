@@ -7,20 +7,13 @@ using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Server.SistemskeOperacije
 {
-    public class AzurirajPaketSO : OpstaSistemskaOperacija
+    public class VratiSveZivotinjeSO : OpstaSistemskaOperacija
     {
-        private Paket paket;
-
-        public AzurirajPaketSO(Paket paket)
-        {
-            this.paket = paket;
-        }
-        
-        
+        public List<Zivotinja> Zivotinje { get; set; }
 
         protected override void Izvrsi()
         {
-            repozitorijum.Azuriraj(paket);
+            Zivotinje = repozitorijum.VratiSve(new Zivotinja()).OfType<Zivotinja>().ToList();
         }
     }
 }

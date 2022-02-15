@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZooloskiVrt.Klijent.Forme.UserControls.Paketi;
+using ZooloskiVrt.Klijent.Forme.UserControls.Posetioci;
 using ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje;
 
 namespace ZooloskiVrt.Klijent.Forme
@@ -19,29 +20,36 @@ namespace ZooloskiVrt.Klijent.Forme
             InitializeComponent();
         }
 
-        private void dodajZivotinjuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UCDodajZivotinju dodajNovuZivotinju = new UCDodajZivotinju();
-            dodajNovuZivotinju.Dock = DockStyle.Fill;
-            pnlMain.Controls.Clear();
-            pnlMain.Controls.Add(dodajNovuZivotinju);
-        }
+        #region staro
+        /*  private void dodajZivotinjuToolStripMenuItem_Click(object sender, EventArgs e)
+          {
+              UCDodajZivotinju dodajNovuZivotinju = new UCDodajZivotinju();
+              dodajNovuZivotinju.Dock = DockStyle.Fill;
+              pnlMain.Controls.Clear();
+              pnlMain.Controls.Add(dodajNovuZivotinju);
+          }
 
-        private void obrisiZivotinjuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UCObrisiZivotinju uCObrisiZivotinju = new UCObrisiZivotinju();
-            uCObrisiZivotinju.Dock = DockStyle.Fill;
-            pnlMain.Controls.Clear();
-            pnlMain.Controls.Add(uCObrisiZivotinju);
-        }
+          private void obrisiZivotinjuToolStripMenuItem_Click(object sender, EventArgs e)
+          {
+              UCObrisiZivotinju uCObrisiZivotinju = new UCObrisiZivotinju();
+              uCObrisiZivotinju.Dock = DockStyle.Fill;
+              pnlMain.Controls.Clear();
+              pnlMain.Controls.Add(uCObrisiZivotinju);
+          }
 
-        private void pretraziZivotinjuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UCZivotinje UcPretrazi = new UCZivotinje();
-            UcPretrazi.Dock = DockStyle.Fill;
-            pnlMain.Controls.Clear();
-            pnlMain.Controls.Add(UcPretrazi);
-        }
+          private void pretraziZivotinjuToolStripMenuItem_Click(object sender, EventArgs e)
+          {
+              UCZivotinje UcPretrazi = new UCZivotinje();
+              UcPretrazi.Dock = DockStyle.Fill;
+              pnlMain.Controls.Clear();
+              pnlMain.Controls.Add(UcPretrazi);
+          }
+  */
+        #endregion
+
+
+
+
 
         private void paketiToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -49,6 +57,22 @@ namespace ZooloskiVrt.Klijent.Forme
             uc.Dock = DockStyle.Fill;
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(uc);
+        }
+
+        private void posetiociToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UCPosetioci uc = new UCPosetioci(pnlMain);
+            uc.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(uc);
+        }
+
+        private void zivotinjeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UCZivotinje UcPretrazi = new UCZivotinje();
+            UcPretrazi.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(UcPretrazi);
         }
     }
 }

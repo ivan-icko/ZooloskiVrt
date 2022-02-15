@@ -7,20 +7,18 @@ using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Server.SistemskeOperacije
 {
-    public class AzurirajPaketSO : OpstaSistemskaOperacija
+    public class SacuvajPrijavuSO : OpstaSistemskaOperacija
     {
-        private Paket paket;
+        private Prijava prijava;
 
-        public AzurirajPaketSO(Paket paket)
+        public SacuvajPrijavuSO(Prijava prijava)
         {
-            this.paket = paket;
+            this.prijava = prijava;
         }
-        
-        
 
         protected override void Izvrsi()
         {
-            repozitorijum.Azuriraj(paket);
+            repozitorijum.Sacuvaj(prijava);
         }
     }
 }

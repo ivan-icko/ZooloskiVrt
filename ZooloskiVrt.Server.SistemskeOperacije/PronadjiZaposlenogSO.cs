@@ -7,12 +7,12 @@ using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Server.SistemskeOperacije
 {
-    public class PretragaZaposlenogSO : OpstaSistemskaOperacija
+    public class PronadjiZaposlenogSO : OpstaSistemskaOperacija
     {
         
         
         public Zaposleni Zaposleni { get; set; }
-        public PretragaZaposlenogSO(Zaposleni z)
+        public PronadjiZaposlenogSO(Zaposleni z)
         {
             Zaposleni = z;
         }

@@ -7,13 +7,12 @@ using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Server.SistemskeOperacije
 {
-    public class VratiListuPaketaSO : OpstaSistemskaOperacija   
+    public class VratiSvePosetioceSO : OpstaSistemskaOperacija
     {
-        public object Paketi { get; set; }
-
+        public List<Posetilac> Posetioci { get; set; }
         protected override void Izvrsi()
         {
-            Paketi = repozitorijum.VratiSve(new Paket()).OfType<Paket>().ToList();
+            Posetioci = repozitorijum.VratiSve(new Posetilac()).OfType<Posetilac>().ToList();
         }
     }
 }

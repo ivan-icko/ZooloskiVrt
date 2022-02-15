@@ -7,11 +7,11 @@ using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Server.SistemskeOperacije
 {
-    public class PronadjiZivotinjuSO : OpstaSistemskaOperacija
+    public class PronadjiZivotinjeSO : OpstaSistemskaOperacija
     {
         public List<Zivotinja> Zivotinje { get; set; } = null;
         public Zivotinja Z { get; set; }
-        public PronadjiZivotinjuSO(Zivotinja z)
+        public PronadjiZivotinjeSO(Zivotinja z)
         {
             Z = z;
         }
@@ -19,6 +19,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
         protected override void Izvrsi()
         {
             Zivotinje = repozitorijum.Pretrazi(Z).OfType<Zivotinja>().ToList();
+
         }
     }
 }

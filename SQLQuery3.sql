@@ -1,0 +1,1 @@
+﻿select * from Paket where cast(IdPaketa as nvarchar(10)) like '%' and NazivPaketa like 'neki' and cast(Cena as float) like '0' and DatumDo like '1/1/0001 12:00:00 AM'

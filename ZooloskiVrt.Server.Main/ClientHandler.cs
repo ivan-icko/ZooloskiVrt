@@ -16,6 +16,7 @@ namespace ZooloskiVrt.Server.Main
     {
         private Socket klijentskiSocket;
         private CommunicationHelper helper;
+        public EventHandler OdjavljenKlijent;
 
         public ClientHandler(Socket klijentskiSocket)
         {
@@ -72,7 +73,7 @@ namespace ZooloskiVrt.Server.Main
                         Controller.Instance.ObrisiZivotinju(zahtev.Objekat as Zivotinja);
                         break;
                     case Operacija.PronadjiZivotinje:
-                        odgovor.Rezultat=Controller.Instance.PronadjiZivotinje(zahtev.Objekat as Zivotinja);
+                        odgovor.Rezultat = Controller.Instance.PronadjiZivotinje(zahtev.Objekat as Zivotinja);
                         break;
                     case Operacija.AzurirajZivotinju:
                         Controller.Instance.AzurirajZivotinju(zahtev.Objekat as Zivotinja);
@@ -92,11 +93,23 @@ namespace ZooloskiVrt.Server.Main
                     case Operacija.PronadjiPakete:
                         odgovor.Rezultat = Controller.Instance.PronadjiPakete(zahtev.Objekat as Paket);
                         break;
+                    case Operacija.DodajZivotinjuUPaket:
+                        Controller.Instance.DodajZivotinjuUPaket(zahtev.Objekat as PaketZivotinja);
+                        break;
+                    case Operacija.VratiSvePosetioce:
+                        odgovor.Rezultat = Controller.Instance.VratiSvePosetioce(zahtev.Objekat as Posetilac);
+                        break;
+                    case Operacija.DodajPrijavu:
+                        Controller.Instance.DodajPrijavu(zahtev.Objekat as Prijava);
+                        break;
+                    case Operacija.VratiSvePrijave:
+                        odgovor.Rezultat = Controller.Instance.VratiSvePrijave(zahtev.Objekat as PosetilacPrijava);
+                        break;
                     default:
                         break;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 odgovor.Ok = false;
@@ -109,11 +122,19 @@ namespace ZooloskiVrt.Server.Main
         {
             if (klijentskiSocket != null)
             {
+                
                 kraj = true;
                 klijentskiSocket.Shutdown(SocketShutdown.Both);
                 klijentskiSocket.Close();
                 klijentskiSocket = null;
+                OdjavljenKlijent?.Invoke(this, EventArgs.Empty);
             }
         }
+
+
+
+
+
+       
     }
 }

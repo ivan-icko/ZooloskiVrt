@@ -41,9 +41,9 @@ namespace ZooloskiVrt.Server.Main
                     Socket klijentskiSocket = socket.Accept();
                     ClientHandler client = new ClientHandler(klijentskiSocket);
                     klijenti.Add(client);
-                    //client.OdjavljenKlijent += Handler_OdjavljenKlijent;
+                    client.OdjavljenKlijent += Handler_OdjavljenKlijent;
                     Thread nitKlijenta = new Thread(client.HandleRequests);
-                    nitKlijenta.IsBackground = false;
+                    nitKlijenta.IsBackground = true;
                     nitKlijenta.Start();
                 }
             }
@@ -52,6 +52,11 @@ namespace ZooloskiVrt.Server.Main
                 Debug.WriteLine(">>>" + ex.Message);
             }
 
+        }
+
+        public void Handler_OdjavljenKlijent(object sender, EventArgs args)
+        {
+            klijenti.Remove((ClientHandler)sender);
         }
 
         public void Stop()

@@ -31,12 +31,13 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 if (Sesija.Instance.Korisnik != null)
                 {
                     
-                    MessageBox.Show($"Dobrodosli, {Sesija.Instance.Korisnik.Ime} {Sesija.Instance.Korisnik.Prezime}!");
+                    MessageBox.Show("Sistem je nasao zaposlenog sa zadataim podacima!","Prijava zaposlenog",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                   
                     frmLogin.DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("Nema takvog zaposlenog!");
+                    MessageBox.Show("Sistem ne moze da pronadje zaposlenog na osnovu ucitanih vrednosti!", "Prijava zaposlenog", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             /*catch (SystemOperationException ex)

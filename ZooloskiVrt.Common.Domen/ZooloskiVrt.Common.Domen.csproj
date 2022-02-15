@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="IDomenskiObjekat.cs" />
     <Compile Include="Paket.cs" />
+    <Compile Include="PaketZivotinja.cs" />
     <Compile Include="Pol.cs" />
+    <Compile Include="Posetilac.cs" />
+    <Compile Include="PosetilacPrijava.cs" />
+    <Compile Include="Prijava.cs" />
     <Compile Include="TipIshrane.cs" />
     <Compile Include="Zaposleni.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

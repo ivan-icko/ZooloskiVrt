@@ -57,6 +57,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
             // btnObrisi
             // 
             this.btnObrisi.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnObrisi.ForeColor = System.Drawing.Color.Red;
             this.btnObrisi.Location = new System.Drawing.Point(1106, 267);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(129, 48);

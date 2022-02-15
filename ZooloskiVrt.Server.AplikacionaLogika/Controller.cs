@@ -36,9 +36,9 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
 
         public List<Zivotinja> VratiSveZivotinje()
         {
-            OpstaSistemskaOperacija so = new VratiListuZivotinjaSO();
+            OpstaSistemskaOperacija so = new VratiSveZivotinjeSO();
             so.IzvrsiTemplejt();
-            return ((VratiListuZivotinjaSO)so).Zivotinje;
+            return ((VratiSveZivotinjeSO)so).Zivotinje;
         }
 
         public void ObrisiZivotinju(Zivotinja z)
@@ -49,16 +49,16 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
 
         public List<Zivotinja> PronadjiZivotinje(Zivotinja z)
         {
-            OpstaSistemskaOperacija so = new PronadjiZivotinjuSO(z);
+            OpstaSistemskaOperacija so = new PronadjiZivotinjeSO(z);
             so.IzvrsiTemplejt();
-            return ((PronadjiZivotinjuSO)so).Zivotinje;
+            return ((PronadjiZivotinjeSO)so).Zivotinje;
         }
 
         public Zaposleni PronadjiZaposlenog(Zaposleni z)
         {
-            OpstaSistemskaOperacija so = new PretragaZaposlenogSO(z);
+            OpstaSistemskaOperacija so = new PronadjiZaposlenogSO(z);
             so.IzvrsiTemplejt();
-            return ((PretragaZaposlenogSO)so).Zaposleni;
+            return ((PronadjiZaposlenogSO)so).Zaposleni;
         }
 
         public void AzurirajZivotinju(Zivotinja z)
@@ -73,14 +73,14 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             so.IzvrsiTemplejt();
         }
 
-        public object VratiSvePakete()
+        public List<Paket> VratiSvePakete()
         {
-            OpstaSistemskaOperacija so = new VratiListuPaketaSO();
+            OpstaSistemskaOperacija so = new VratiSvePaketeSO();
             so.IzvrsiTemplejt();
-            return ((VratiListuPaketaSO)so).Paketi;
+            return ((VratiSvePaketeSO)so).Paketi;
         }
 
-        public object VratiZivotinjeZaPakete(Zivotinja zivotinja)
+        public List<Zivotinja> VratiZivotinjeZaPakete(Zivotinja zivotinja)
         {
             OpstaSistemskaOperacija so = new VratiZivotinjeZaPaketeSO(zivotinja);
             so.IzvrsiTemplejt();
@@ -93,11 +93,37 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             so.IzvrsiTemplejt();
         }
 
-        public object PronadjiPakete(Paket paket)
+        public List<Paket> PronadjiPakete(Paket paket)
         {
             OpstaSistemskaOperacija so = new PronadjiPaketeSO(paket);
             so.IzvrsiTemplejt();
             return ((PronadjiPaketeSO)so).Paketi;
+        }
+
+        public void DodajZivotinjuUPaket(PaketZivotinja paketZivotinja)
+        {
+            OpstaSistemskaOperacija so = new DodajZivotinjuUPaketSO(paketZivotinja);
+            so.IzvrsiTemplejt();
+        }
+
+        public List<Posetilac> VratiSvePosetioce(Posetilac posetilac)
+        {
+            OpstaSistemskaOperacija so = new VratiSvePosetioceSO();
+            so.IzvrsiTemplejt();
+            return ((VratiSvePosetioceSO)so).Posetioci;
+        }
+
+        public void DodajPrijavu(Prijava prijava)
+        {
+            OpstaSistemskaOperacija so = new SacuvajPrijavuSO(prijava);
+            so.IzvrsiTemplejt();
+        }
+
+        public List<PosetilacPrijava> VratiSvePrijave(PosetilacPrijava pp)
+        {
+            OpstaSistemskaOperacija so = new VratiSvePrijaveSO(pp);
+            so.IzvrsiTemplejt();
+            return ((VratiSvePrijaveSO)so).Prijave;
         }
     }
 }

@@ -44,5 +44,10 @@ namespace ZooloskiVrt.Server.Main
             btnZaustavi.BackColor = Color.Red;
             btnPokreni.BackColor = default;
         }
+
+        private void FrmServer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

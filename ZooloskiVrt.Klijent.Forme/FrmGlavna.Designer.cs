@@ -33,9 +33,6 @@ namespace ZooloskiVrt.Klijent.Forme
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.zivotinjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.obrisiZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretraziZivotinjuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paketiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.posetiociToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain = new System.Windows.Forms.Panel();
@@ -63,34 +60,10 @@ namespace ZooloskiVrt.Klijent.Forme
             // 
             // zivotinjeToolStripMenuItem
             // 
-            this.zivotinjeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajZivotinjuToolStripMenuItem,
-            this.obrisiZivotinjuToolStripMenuItem,
-            this.pretraziZivotinjuToolStripMenuItem});
             this.zivotinjeToolStripMenuItem.Name = "zivotinjeToolStripMenuItem";
             this.zivotinjeToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.zivotinjeToolStripMenuItem.Text = "Zivotinje";
-            // 
-            // dodajZivotinjuToolStripMenuItem
-            // 
-            this.dodajZivotinjuToolStripMenuItem.Name = "dodajZivotinjuToolStripMenuItem";
-            this.dodajZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.dodajZivotinjuToolStripMenuItem.Text = "Dodaj zivotinju";
-            this.dodajZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.dodajZivotinjuToolStripMenuItem_Click);
-            // 
-            // obrisiZivotinjuToolStripMenuItem
-            // 
-            this.obrisiZivotinjuToolStripMenuItem.Name = "obrisiZivotinjuToolStripMenuItem";
-            this.obrisiZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.obrisiZivotinjuToolStripMenuItem.Text = "Obrisi zivotinju";
-            this.obrisiZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.obrisiZivotinjuToolStripMenuItem_Click);
-            // 
-            // pretraziZivotinjuToolStripMenuItem
-            // 
-            this.pretraziZivotinjuToolStripMenuItem.Name = "pretraziZivotinjuToolStripMenuItem";
-            this.pretraziZivotinjuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.pretraziZivotinjuToolStripMenuItem.Text = "Pretrazi zivotinju";
-            this.pretraziZivotinjuToolStripMenuItem.Click += new System.EventHandler(this.pretraziZivotinjuToolStripMenuItem_Click);
+            this.zivotinjeToolStripMenuItem.Click += new System.EventHandler(this.zivotinjeToolStripMenuItem_Click);
             // 
             // paketiToolStripMenuItem
             // 
@@ -104,6 +77,7 @@ namespace ZooloskiVrt.Klijent.Forme
             this.posetiociToolStripMenuItem.Name = "posetiociToolStripMenuItem";
             this.posetiociToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.posetiociToolStripMenuItem.Text = "Posetioci";
+            this.posetiociToolStripMenuItem.Click += new System.EventHandler(this.posetiociToolStripMenuItem_Click);
             // 
             // pnlMain
             // 
@@ -135,10 +109,7 @@ namespace ZooloskiVrt.Klijent.Forme
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem zivotinjeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajZivotinjuToolStripMenuItem;
         private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.ToolStripMenuItem obrisiZivotinjuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pretraziZivotinjuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem paketiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem posetiociToolStripMenuItem;
     }
