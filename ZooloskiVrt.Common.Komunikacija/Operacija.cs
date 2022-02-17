@@ -24,6 +24,8 @@ namespace ZooloskiVrt.Common.Komunikacija
         DodajZivotinjuUPaket,
         VratiSvePosetioce,
         DodajPrijavu,
+        VratiSvePrijaveZaPosetioce,
+        IzbrisiZivotinjuIzPaketa,
         VratiSvePrijave
     }
 }

@@ -31,7 +31,6 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnObrisi = new System.Windows.Forms.Button();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.btnPrikaziSve = new System.Windows.Forms.Button();
             this.gbPretraga = new System.Windows.Forms.GroupBox();
@@ -53,17 +52,6 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
             ((System.ComponentModel.ISupportInitialize)(this.dgvPretrazi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZivotinjeUPaketu)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnObrisi
-            // 
-            this.btnObrisi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnObrisi.ForeColor = System.Drawing.Color.Red;
-            this.btnObrisi.Location = new System.Drawing.Point(1106, 267);
-            this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(129, 48);
-            this.btnObrisi.TabIndex = 22;
-            this.btnObrisi.Text = "Obrisi";
-            this.btnObrisi.UseVisualStyleBackColor = true;
             // 
             // btnPrikazi
             // 
@@ -245,7 +233,6 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
             this.Controls.Add(this.btnDodajZivotinju);
             this.Controls.Add(this.btnObrisiZivotinju);
             this.Controls.Add(this.dgvZivotinjeUPaketu);
-            this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.btnPrikaziSve);
             this.Controls.Add(this.gbPretraga);
@@ -261,8 +248,6 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnObrisi;
         private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.Button btnPrikaziSve;
         private System.Windows.Forms.GroupBox gbPretraga;
@@ -281,7 +266,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
         private Button btnObrisiZivotinju;
         private Button btnDodajZivotinju;
 
-        public Button BtnObrisi { get => btnObrisi; set => btnObrisi = value; }
+       
         public Button BtnPrikazi { get => btnPrikazi; set => btnPrikazi = value; }
         public Button BtnPrikaziSve { get => btnPrikaziSve; set => btnPrikaziSve = value; }
         public GroupBox GbPretraga { get => gbPretraga; set => gbPretraga = value; }

@@ -10,6 +10,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
     public class ObrisiZivotinjuSO : OpstaSistemskaOperacija
     {
         public Zivotinja Zivotinja { get; set; }
+        public bool Signal { get; set; } = true;
         public ObrisiZivotinjuSO(Zivotinja z)
         {
             Zivotinja = z;
@@ -17,7 +18,15 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 
         protected override void Izvrsi()
         {
-            repozitorijum.Obrisi(Zivotinja);
+            try
+            {
+                repozitorijum.Obrisi(Zivotinja);
+            }
+            catch (Exception ex)
+            {
+                Signal = false;
+                throw;
+            }
         }
     }
 }

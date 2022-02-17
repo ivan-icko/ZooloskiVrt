@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AzurirajPaketSO.cs" />
     <Compile Include="AzurirajZivotinjuSO.cs" />
+    <Compile Include="ObrisiZivotinjuIzPaketaSO.cs" />
     <Compile Include="SacuvajPrijavuSO.cs" />
     <Compile Include="DodajZivotinjuUPaketSO.cs" />
     <Compile Include="KreirajPaketSO.cs" />
@@ -54,9 +55,10 @@
     <Compile Include="PronadjiZivotinjeSO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VratiSvePaketeSO.cs" />
+    <Compile Include="VratiSvePrijaveSO.cs" />
     <Compile Include="VratiSveZivotinjeSO.cs" />
     <Compile Include="VratiSvePosetioceSO.cs" />
-    <Compile Include="VratiSvePrijaveSO.cs" />
+    <Compile Include="VratiSvePrijaveZaPosetioceSO.cs" />
     <Compile Include="VratiZivotinjeZaPaketeSO.cs" />
   </ItemGroup>
   <ItemGroup>

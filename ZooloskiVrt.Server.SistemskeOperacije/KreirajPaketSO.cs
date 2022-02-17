@@ -10,6 +10,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
     public class KreirajPaketSO : OpstaSistemskaOperacija
     {
         private Paket p;
+        public bool Signal { get; set; } = true;
         public KreirajPaketSO(Paket p)
         {
             this.p = p;
@@ -17,7 +18,15 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 
         protected override void Izvrsi()
         {
-            repozitorijum.Sacuvaj(p);
+            try
+            {
+                repozitorijum.Sacuvaj(p);
+            }
+            catch (Exception)
+            {
+                Signal = false;
+                throw;
+            }
         }
     }
 }

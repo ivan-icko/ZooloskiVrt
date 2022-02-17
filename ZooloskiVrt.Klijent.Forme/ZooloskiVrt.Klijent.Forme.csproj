@@ -46,12 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GUIController\DodajZivotinjuUPaketKontroler.cs" />
-    <Compile Include="GUIController\ObrisiZivotinjuKontroler.cs" />
-    <Compile Include="GUIController\PaketiKontroler.cs" />
-    <Compile Include="GUIController\PretraziZIvotinjuKontroler.cs" />
-    <Compile Include="GUIController\PrijaviPosetioceNaPaketeKontroler.cs" />
-    <Compile Include="GUIController\PrikaziPrijaveKontroler.cs" />
+    <Compile Include="GUIController\Paketi\DodajZivotinjuUPaketKontroler.cs" />
+    <Compile Include="GUIController\Staro\ObrisiZivotinjuKontroler.cs" />
+    <Compile Include="GUIController\Paketi\PaketiKontroler.cs" />
+    <Compile Include="GUIController\Zivotinje\ZivotinjeKontroler.cs" />
+    <Compile Include="GUIController\Posetioci\PrijaviPosetioceNaPaketeKontroler.cs" />
+    <Compile Include="GUIController\Posetioci\PrikaziPrijaveKontroler.cs" />
     <Compile Include="Komunikacija.cs" />
     <Compile Include="FrmGlavna.cs">
       <SubType>Form</SubType>
@@ -65,8 +65,8 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUIController\DodajZivotinjuKontroler.cs" />
-    <Compile Include="GUIController\PrijavaKontroler.cs" />
+    <Compile Include="GUIController\Staro\DodajZivotinjuKontroler.cs" />
+    <Compile Include="GUIController\Zaposleni\PrijavaKontroler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sesija.cs" />

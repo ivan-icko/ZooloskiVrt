@@ -35,6 +35,20 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             uc.BtnPrikaziSve.Click += BtnPrikaziSve_Click;
             uc.BtnAzuriraj.Click += BtnAzuriraj_Click;
             uc.BtnPretrazi.Click += BtnPretrazi_Click;
+            uc.BtnObrisiZivotinju.Click += BtnObrisiZivotinju_Click;
+        }
+
+        private void BtnObrisiZivotinju_Click(object sender, EventArgs e)
+        {
+            if (uc.DgvZivotinjeUPaketu.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Sistem ne moze da obrise zivotinju iz paketa", "Brisanje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Niste izabrali zivotinju za brisanje");
+                return;
+            }
+            int IdZivotinje = (uc.DgvZivotinjeUPaketu.SelectedRows[0].DataBoundItem as Zivotinja).IdZivotinje;
+            Sesija.Instance.ListaZivotinjaUPaketu.RemoveAll(a => a.IdZivotinje == IdZivotinje);
+            NapuniDgvZivotinje();
         }
 
         private void BtnPretrazi_Click(object sender, EventArgs e)
@@ -46,7 +60,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             List<Paket> pronadjeni = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Paket>>(Common.Komunikacija.Operacija.PronadjiPakete, noviPaket);
             if (pronadjeni == null)
             {
-                System.Windows.Forms.MessageBox.Show("Ne postoji takav paket");
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da pronadje pakete po zadatoj vrednosti", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return;
             }
             else { OsveziDgv1(pronadjeni); }
@@ -60,12 +74,13 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private bool ValidacijaPretrage()
         {
-            double cenaPaketa=0;
-            DateTime datumDo=new DateTime();
+            double cenaPaketa = 0;
+            DateTime datumDo = new DateTime();
             if (!string.IsNullOrEmpty(uc.TxtCena.Text))
             {
                 if (!double.TryParse(uc.TxtCena.Text, out double cena))
                 {
+                    System.Windows.Forms.MessageBox.Show("Sistem ne moze da pronadje pakete po zadatoj vrednosti", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     System.Windows.Forms.MessageBox.Show("Greska pri unosu cene");
                     return false;
                 }
@@ -76,39 +91,69 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             {
                 if (!DateTime.TryParse(uc.TxtDatumDo.Text, out DateTime datum))
                 {
+                    System.Windows.Forms.MessageBox.Show("Sistem ne moze da pronadje pakete po zadatoj vrednosti", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     System.Windows.Forms.MessageBox.Show("Greska pri unosu datuma");
                     return false;
                 }
                 datumDo = datum;
             }
-            noviPaket = NapuniPaket(uc.TxtNazivPaketa.Text, cenaPaketa,datumDo);
+            noviPaket = NapuniPaket(uc.TxtNazivPaketa.Text, cenaPaketa, datumDo);
             return true;
         }
 
         private Paket NapuniPaket(string naziv, double cena, DateTime datum)
         {
-            Paket p = new Paket(null, naziv, cena==0?null:cena.ToString(), datum==new DateTime()?null:datum.ToString("yyyy-MM-dd"));
+            Paket p = new Paket(null, naziv, cena == 0 ? null : cena.ToString(), datum == new DateTime() ? null : datum.ToString("yyyy-MM-dd"));
             return p;
         }
 
         private void BtnAzuriraj_Click(object sender, EventArgs e)
         {
-            if (!Validacija())
+            if (!ValidacijaAzuriranja())
             {
                 return;
             }
             Paket p = new Paket(izabraniPaket.IdPaketa.ToString(), null, null, null);
-
             p.IdPaketa = izabraniPaket.IdPaketa;
             p.NazivPaketa = uc.TxtNazivPaketa.Text;
             p.Cena = double.Parse(uc.TxtCena.Text);
             p.DatumDo = DateTime.Parse(uc.TxtDatumDo.Text);
 
-            Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.AzurirajPaket, p);
-            OsveziDgv();
-            System.Windows.Forms.MessageBox.Show("Uspesno ste azurirali paket");
+            foreach (var z in Sesija.Instance.ListaZivotinjaUPaketu)
+            {
+                p.ListaIdjevaZivotinja.Add(z.IdZivotinje);
+            }
 
+            if (Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.AzurirajPaket, p))
+            {
+                OsveziDgv();
+                System.Windows.Forms.MessageBox.Show("Sistem je uspesno azurirao podatke o paketu", "Azuriranje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else { System.Windows.Forms.MessageBox.Show("Sistem ne moze da azurira podatke o paketu", "Azuriranje", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
+        }
+
+        private bool ValidacijaAzuriranja()
+        {
+            if (string.IsNullOrEmpty(uc.TxtCena.Text) || string.IsNullOrEmpty(uc.TxtDatumDo.Text) || string.IsNullOrEmpty(uc.TxtNazivPaketa.Text))
+            {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da azurira podatke o paketu", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Sva polja su obavezna");
+                return false;
+            }
+            if (!double.TryParse(uc.TxtCena.Text, out double cena))
+            {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da azurira podatke o paketu", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Greska pri unosu cene");
+                return false;
+            }
+            if (!DateTime.TryParse(uc.TxtDatumDo.Text, out DateTime datum) || datum <= DateTime.Now)
+            {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da azurira podatke o paketu", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Datum nije u dobrom formatu");
+                return false;
+            }
+            return true;
         }
 
         private void BtnPrikaziSve_Click(object sender, EventArgs e)
@@ -121,23 +166,33 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             uc.TxtCena.Text = "";
             uc.TxtDatumDo.Text = "";
             uc.TxtNazivPaketa.Text = "";
+            uc.DgvZivotinjeUPaketu.DataSource = null;
         }
 
         private void BtnPrikazi_Click(object sender, EventArgs e)
         {
             if (uc.DgvPretrazi.SelectedRows.Count == 0)
             {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da ucita podatke o paketu", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show("Niste odabrali paket za prikaz");
                 return;
             }
             izabraniPaket = (Paket)uc.DgvPretrazi.SelectedRows[0].DataBoundItem;
             NapuniPretragu(izabraniPaket);
-            NapuniDgvSaZivotinjama(izabraniPaket.IdPaketa);
+
+            Sesija.Instance.ListaZivotinjaUPaketu = NapuniListuTrenutnihZivotinja(izabraniPaket.IdPaketa);
+            NapuniDgvZivotinje();
+            System.Windows.Forms.MessageBox.Show("Sistem je ucitao podatke o paketu", "Ucitavanje", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
 
-        private void NapuniDgvSaZivotinjama(int idPaketa)
+        private void NapuniDgvZivotinje()
         {
-            uc.DgvZivotinjeUPaketu.DataSource = new BindingList<Zivotinja>(Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiZIvotinjeZaPakete, new Zivotinja() { JoinUslov = "join PaketZivotinja on Zivotinja.IdZivotinje=PaketZivotinja.IdZivotinje", Uslov = $"where PaketZivotinja.IdPaketa={idPaketa}" }));
+            uc.DgvZivotinjeUPaketu.DataSource = new BindingList<Zivotinja>(Sesija.Instance.ListaZivotinjaUPaketu);
+        }
+
+        private List<Zivotinja> NapuniListuTrenutnihZivotinja(int idPaketa)
+        {
+            return (Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiZIvotinjeZaPakete, new Zivotinja() { JoinUslov = "join PaketZivotinja on Zivotinja.IdZivotinje=PaketZivotinja.IdZivotinje", Uslov = $"where PaketZivotinja.IdPaketa={idPaketa}" }));
         }
 
         private void NapuniPretragu(Paket izabraniPaket)
@@ -169,7 +224,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             p = NapuniPaket(p);
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajPaket, p);
             OsveziDgv();
-            System.Windows.Forms.MessageBox.Show("Sistem je zapamtio paket", "Dodavanje paketa", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+            System.Windows.Forms.MessageBox.Show("Sistem je uspesno zapamtio paket", "Dodavanje paketa", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
         }
 
@@ -191,17 +246,20 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
         {
             if (string.IsNullOrEmpty(uc.TxtCena.Text) || string.IsNullOrEmpty(uc.TxtDatumDo.Text) || string.IsNullOrEmpty(uc.TxtNazivPaketa.Text))
             {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da zapamti paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show("Sva polja su obavezna");
                 return false;
             }
             if (!double.TryParse(uc.TxtCena.Text, out double cena))
             {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da zapamti paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show("Greska pri unosu cene");
                 return false;
             }
-            if (!DateTime.TryParse(uc.TxtDatumDo.Text, out DateTime datum))
+            if (!DateTime.TryParse(uc.TxtDatumDo.Text, out DateTime datum) || datum <= DateTime.Now)
             {
-                System.Windows.Forms.MessageBox.Show("Datum nije u dobrom formatu");
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da zapamti paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Greska pri unosu datuma");
                 return false;
             }
             return true;

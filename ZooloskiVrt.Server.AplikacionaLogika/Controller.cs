@@ -28,10 +28,11 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
         
 
 
-        public void DodajZivotinju(Zivotinja z)
+        public bool DodajZivotinju(Zivotinja z)
         {
             OpstaSistemskaOperacija so = new KreirajZivotinjuSO(z);
             so.IzvrsiTemplejt();
+            return ((KreirajZivotinjuSO)so).Signal;
         }
 
         public List<Zivotinja> VratiSveZivotinje()
@@ -41,10 +42,11 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             return ((VratiSveZivotinjeSO)so).Zivotinje;
         }
 
-        public void ObrisiZivotinju(Zivotinja z)
+        public bool ObrisiZivotinju(Zivotinja z)
         {
             OpstaSistemskaOperacija so = new ObrisiZivotinjuSO(z);
             so.IzvrsiTemplejt();
+            return ((ObrisiZivotinjuSO)so).Signal;
         }
 
         public List<Zivotinja> PronadjiZivotinje(Zivotinja z)
@@ -61,16 +63,18 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             return ((PronadjiZaposlenogSO)so).Zaposleni;
         }
 
-        public void AzurirajZivotinju(Zivotinja z)
+        public bool AzurirajZivotinju(Zivotinja z)
         {
             OpstaSistemskaOperacija so = new AzurirajZivotinjuSO(z);
             so.IzvrsiTemplejt();
+            return ((AzurirajZivotinjuSO)so).Signal;
         }
 
-        public void DodajPaket(Paket p)
+        public bool DodajPaket(Paket p)
         {
             OpstaSistemskaOperacija so = new KreirajPaketSO(p);
             so.IzvrsiTemplejt();
+            return ((KreirajPaketSO)so).Signal;
         }
 
         public List<Paket> VratiSvePakete()
@@ -87,10 +91,11 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             return ((VratiZivotinjeZaPaketeSO)so).Zivotinje;
         }
 
-        public void AzurirajPaket(Paket paket)
+        public bool AzurirajPaket(Paket paket)
         {
             OpstaSistemskaOperacija so = new AzurirajPaketSO(paket);
             so.IzvrsiTemplejt();
+            return ((AzurirajPaketSO)so).Signal;
         }
 
         public List<Paket> PronadjiPakete(Paket paket)
@@ -100,10 +105,11 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             return ((PronadjiPaketeSO)so).Paketi;
         }
 
-        public void DodajZivotinjuUPaket(PaketZivotinja paketZivotinja)
+        public bool DodajZivotinjuUPaket(PaketZivotinja paketZivotinja)
         {
             OpstaSistemskaOperacija so = new DodajZivotinjuUPaketSO(paketZivotinja);
             so.IzvrsiTemplejt();
+            return ((DodajZivotinjuUPaketSO)so).Signal;
         }
 
         public List<Posetilac> VratiSvePosetioce(Posetilac posetilac)
@@ -113,17 +119,31 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             return ((VratiSvePosetioceSO)so).Posetioci;
         }
 
-        public void DodajPrijavu(Prijava prijava)
+        public bool DodajPrijavu(Prijava prijava)
         {
             OpstaSistemskaOperacija so = new SacuvajPrijavuSO(prijava);
             so.IzvrsiTemplejt();
+            return ((SacuvajPrijavuSO)so).Signal;
         }
 
-        public List<PosetilacPrijava> VratiSvePrijave(PosetilacPrijava pp)
+        public List<PosetilacPrijava> VratiSvePrijaveZaPosetioce(PosetilacPrijava pp)
+        {
+            OpstaSistemskaOperacija so = new VratiSvePrijaveZaPosetioceSO(pp);
+            so.IzvrsiTemplejt();
+            return ((VratiSvePrijaveZaPosetioceSO)so).Prijave;
+        }
+        public List<Prijava> VratiSvePrijave(Prijava pp)
         {
             OpstaSistemskaOperacija so = new VratiSvePrijaveSO(pp);
             so.IzvrsiTemplejt();
             return ((VratiSvePrijaveSO)so).Prijave;
+        }
+
+        public bool ObrisiZivotinjuIzPaketa(PaketZivotinja paketZivotinja)
+        {
+            OpstaSistemskaOperacija so = new ObrisiZivotinjuIzPaketaSO(paketZivotinja);
+            so.IzvrsiTemplejt();
+            return ((ObrisiZivotinjuIzPaketaSO)so).Signal;
         }
     }
 }

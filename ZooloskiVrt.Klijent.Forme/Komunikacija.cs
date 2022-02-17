@@ -45,15 +45,24 @@ namespace ZooloskiVrt.Klijent.Forme
             return VratiRezultat<Izlaz>();
         }
 
-
-
-
-
-        public void ZahtevajBezVracanja(Operacija operacija,object o)
+        public bool ZahtevajBezVracanja(Operacija operacija,object o)
         {
             Zahtevaj(operacija, o);
-            VratiRezultat();
+            return VratiUspesnostZahteva();
         } 
+
+        public bool VratiUspesnostZahteva()
+        {
+            Odgovor odgovor = helper.Primi<Odgovor>();
+            if (odgovor.Ok)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         private T VratiRezultat<T>() where T : class
         {
@@ -68,7 +77,7 @@ namespace ZooloskiVrt.Klijent.Forme
             }
             else
             {
-                throw new Exception(odgovor.Poruka);
+                throw new Exception("Sistemska greska");
             }
         }
 

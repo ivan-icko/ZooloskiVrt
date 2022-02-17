@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ZooloskiVrt.Common.Domen
 {
     [Serializable]
-   public class PaketZivotinja:IDomenskiObjekat
+    public class PaketZivotinja : IDomenskiObjekat
     {
         public int IdZivotinje { get; set; }
         public int IdPaketa { get; set; }
@@ -19,7 +19,10 @@ namespace ZooloskiVrt.Common.Domen
 
         public string Kolone => "(IdPaketa,IdZivotinje)";
 
-        public string Uslov { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Uslov
+        {
+            get;set;
+        }
 
         public string Azuriranje => throw new NotImplementedException();
 

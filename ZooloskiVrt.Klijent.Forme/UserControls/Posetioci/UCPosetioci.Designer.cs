@@ -53,7 +53,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             this.dgvPaketi.Name = "dgvPaketi";
             this.dgvPaketi.RowHeadersWidth = 51;
             this.dgvPaketi.RowTemplate.Height = 24;
-            this.dgvPaketi.Size = new System.Drawing.Size(723, 150);
+            this.dgvPaketi.Size = new System.Drawing.Size(723, 243);
             this.dgvPaketi.TabIndex = 0;
             // 
             // dgvPosetioci
@@ -64,13 +64,13 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             this.dgvPosetioci.Name = "dgvPosetioci";
             this.dgvPosetioci.RowHeadersWidth = 51;
             this.dgvPosetioci.RowTemplate.Height = 24;
-            this.dgvPosetioci.Size = new System.Drawing.Size(720, 150);
+            this.dgvPosetioci.Size = new System.Drawing.Size(720, 225);
             this.dgvPosetioci.TabIndex = 1;
             // 
             // btnDodaj
             // 
             this.btnDodaj.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDodaj.Location = new System.Drawing.Point(64, 233);
+            this.btnDodaj.Location = new System.Drawing.Point(64, 287);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(192, 40);
             this.btnDodaj.TabIndex = 2;
@@ -80,7 +80,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             // btnPrikazi
             // 
             this.btnPrikazi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPrikazi.Location = new System.Drawing.Point(613, 233);
+            this.btnPrikazi.Location = new System.Drawing.Point(613, 287);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(192, 40);
             this.btnPrikazi.TabIndex = 3;
@@ -92,9 +92,9 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             // 
             this.gb1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gb1.Controls.Add(this.dgvPosetioci);
-            this.gb1.Location = new System.Drawing.Point(64, 23);
+            this.gb1.Location = new System.Drawing.Point(64, 15);
             this.gb1.Name = "gb1";
-            this.gb1.Size = new System.Drawing.Size(773, 194);
+            this.gb1.Size = new System.Drawing.Size(773, 266);
             this.gb1.TabIndex = 4;
             this.gb1.TabStop = false;
             this.gb1.Text = "Posetioci";
@@ -103,9 +103,9 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             // 
             this.gb2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gb2.Controls.Add(this.dgvPaketi);
-            this.gb2.Location = new System.Drawing.Point(64, 293);
+            this.gb2.Location = new System.Drawing.Point(64, 333);
             this.gb2.Name = "gb2";
-            this.gb2.Size = new System.Drawing.Size(773, 194);
+            this.gb2.Size = new System.Drawing.Size(773, 270);
             this.gb2.TabIndex = 5;
             this.gb2.TabStop = false;
             this.gb2.Text = "Paketi";
@@ -113,7 +113,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             // txtBrojOsoba
             // 
             this.txtBrojOsoba.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtBrojOsoba.Location = new System.Drawing.Point(392, 244);
+            this.txtBrojOsoba.Location = new System.Drawing.Point(392, 298);
             this.txtBrojOsoba.Name = "txtBrojOsoba";
             this.txtBrojOsoba.Size = new System.Drawing.Size(100, 22);
             this.txtBrojOsoba.TabIndex = 6;
@@ -122,7 +122,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             // 
             this.lbl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(401, 224);
+            this.lbl1.Location = new System.Drawing.Point(401, 278);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(76, 17);
             this.lbl1.TabIndex = 7;
@@ -139,7 +139,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.btnDodaj);
             this.Name = "UCPosetioci";
-            this.Size = new System.Drawing.Size(921, 530);
+            this.Size = new System.Drawing.Size(921, 639);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaketi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosetioci)).EndInit();
             this.gb1.ResumeLayout(false);

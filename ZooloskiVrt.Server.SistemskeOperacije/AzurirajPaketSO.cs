@@ -10,17 +10,34 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
     public class AzurirajPaketSO : OpstaSistemskaOperacija
     {
         private Paket paket;
-
+        public bool Signal { get; set; } = true;
         public AzurirajPaketSO(Paket paket)
         {
             this.paket = paket;
         }
-        
-        
+
+
 
         protected override void Izvrsi()
         {
-            repozitorijum.Azuriraj(paket);
+
+            try
+            {
+                repozitorijum.Azuriraj(paket);
+                repozitorijum.Obrisi(new PaketZivotinja() { Uslov = $"IdPaketa={paket.IdPaketa}" });
+                if (paket.ListaIdjevaZivotinja != null && paket.ListaIdjevaZivotinja.Count > 0)
+                {
+                    foreach (int id in paket.ListaIdjevaZivotinja)
+                    {
+                        repozitorijum.Sacuvaj(new PaketZivotinja { IdPaketa = paket.IdPaketa, IdZivotinje = id });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Signal = false;
+                throw;
+            }
         }
     }
 }

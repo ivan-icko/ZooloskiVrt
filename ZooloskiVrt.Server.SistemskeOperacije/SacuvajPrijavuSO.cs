@@ -10,7 +10,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
     public class SacuvajPrijavuSO : OpstaSistemskaOperacija
     {
         private Prijava prijava;
-
+        public bool Signal { get; set; } = true;
         public SacuvajPrijavuSO(Prijava prijava)
         {
             this.prijava = prijava;
@@ -18,7 +18,15 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 
         protected override void Izvrsi()
         {
-            repozitorijum.Sacuvaj(prijava);
+            try
+            {
+                repozitorijum.Sacuvaj(prijava);
+            }
+            catch (Exception ex)
+            {
+                Signal = false;
+                throw;
+            }
         }
     }
 }

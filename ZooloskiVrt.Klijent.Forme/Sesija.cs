@@ -22,7 +22,9 @@ namespace ZooloskiVrt.Klijent.Forme
             }
         }
 
+        public List<Prijava> Prijave { get; set; }
+
         public Zaposleni Korisnik { get; set; }
-        
+        public List<Zivotinja> ListaZivotinjaUPaketu { get;  set; }
     }
 }

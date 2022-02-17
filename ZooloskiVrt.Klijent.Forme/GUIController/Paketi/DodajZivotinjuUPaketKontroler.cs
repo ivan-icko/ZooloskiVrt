@@ -33,6 +33,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
         {
             if (uc.DgvZivotinje.SelectedRows.Count == 0)
             {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da doda zivotinju u paket", "Dodavanje zivotinje", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show("Niste izabrali zivotinju za dodavanje");
                 return;
             }
@@ -41,7 +42,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             PaketZivotinja pz = new PaketZivotinja() { IdZivotinje = IdZivotinje, IdPaketa = idPaketa };
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajZivotinjuUPaket,pz);
             NapuniDgv();
-            System.Windows.Forms.MessageBox.Show("Uspesno ste dodali zivotinju u paket","Dodavanje zivotinje",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Information);
+            System.Windows.Forms.MessageBox.Show("Sistem je dodao zivotinju u paket","Dodavanje zivotinje",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Information);
         }
 
         

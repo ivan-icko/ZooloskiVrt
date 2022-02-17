@@ -21,7 +21,8 @@ namespace ZooloskiVrt.Common.Domen
         {
 
         }
-
+        [Browsable(false)]
+        public List<int> ListaIdjevaZivotinja = new List<int>();
         [Browsable(false)]
         public string NazivTabele => "Paket";
         [Browsable(false)]

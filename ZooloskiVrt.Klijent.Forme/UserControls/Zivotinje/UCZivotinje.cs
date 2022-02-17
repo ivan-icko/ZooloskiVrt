@@ -13,11 +13,11 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Zivotinje
 {
     public partial class UCZivotinje : UserControl
     {
-        PretraziZIvotinjuKontroler kontroler;
+        ZivotinjeKontroler kontroler;
         public UCZivotinje()
         {
             InitializeComponent();
-            kontroler = new PretraziZIvotinjuKontroler(this);
+            kontroler = new ZivotinjeKontroler(this);
             kontroler.Inicijalizuj();
         }
         

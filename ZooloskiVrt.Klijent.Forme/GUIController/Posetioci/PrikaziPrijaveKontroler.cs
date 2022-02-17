@@ -25,7 +25,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private void NapuniPrijave()
         {
-            uc.DgvPrijave.DataSource = new BindingList<PosetilacPrijava>(Komunikacija.Instance.ZahtevajIVratiRezultat<List<PosetilacPrijava>>(Common.Komunikacija.Operacija.VratiSvePrijave, new PosetilacPrijava() { JoinUslov = "join Prijava on(Prijava.IdPosetioca = Posetilac.IdPosetioca) join Paket on(Paket.IdPaketa=Prijava.IdPaketa)", Uslov = null }));
+            uc.DgvPrijave.DataSource = new BindingList<PosetilacPrijava>(Komunikacija.Instance.ZahtevajIVratiRezultat<List<PosetilacPrijava>>(Common.Komunikacija.Operacija.VratiSvePrijaveZaPosetioce, new PosetilacPrijava() { JoinUslov = "join Prijava on(Prijava.IdPosetioca = Posetilac.IdPosetioca) join Paket on(Paket.IdPaketa=Prijava.IdPaketa)", Uslov = null }));
         }
     }
 }

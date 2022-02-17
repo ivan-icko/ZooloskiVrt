@@ -10,6 +10,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
     public class DodajZivotinjuUPaketSO : OpstaSistemskaOperacija
     {
         private PaketZivotinja paketZivotinja;
+        public bool Signal { get; set; } = true;
 
         public DodajZivotinjuUPaketSO(PaketZivotinja paketZivotinja)
         {
@@ -18,7 +19,15 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 
         protected override void Izvrsi()
         {
-            repozitorijum.Sacuvaj(paketZivotinja);
+            try
+            {
+                repozitorijum.Sacuvaj(paketZivotinja);
+            }
+            catch (Exception ex)
+            {
+                Signal = false;
+                throw;
+            }
         }
     }
 }

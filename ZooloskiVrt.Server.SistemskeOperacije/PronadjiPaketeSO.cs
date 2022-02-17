@@ -17,7 +17,9 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
         }
         protected override void Izvrsi()
         {
-            Paketi=repozitorijum.Pretrazi(P).OfType<Paket>().ToList();
+
+            Paketi = repozitorijum.Pretrazi(P).OfType<Paket>().ToList();
+
         }
     }
 }

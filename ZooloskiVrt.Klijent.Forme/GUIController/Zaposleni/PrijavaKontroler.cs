@@ -46,7 +46,8 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             }*/
             catch (SocketException ex)
             {
-                MessageBox.Show("Greska u komunikaciji sa serverom!");
+                System.Windows.Forms.MessageBox.Show("Greska u komunikaciji sa serverom", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                Environment.Exit(0);
             }
         }
     }

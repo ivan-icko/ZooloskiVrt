@@ -33,6 +33,13 @@ namespace ZooloskiVrt.Common.Domen
 
         public string JoinUslov { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Prijava prijava &&
+                   IdPaketa == prijava.IdPaketa &&
+                   IdPosetioca == prijava.IdPosetioca;
+        }
+
         public IDomenskiObjekat ProcitajRed(SqlDataReader reader)
         {
             Prijava p = new Prijava()
@@ -44,5 +51,7 @@ namespace ZooloskiVrt.Common.Domen
             };
             return p;
         }
+
+        
     }
 }

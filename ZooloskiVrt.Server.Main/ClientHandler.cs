@@ -64,22 +64,22 @@ namespace ZooloskiVrt.Server.Main
                         }
                         break;
                     case Operacija.DodajZivotinju:
-                        Controller.Instance.DodajZivotinju((Zivotinja)zahtev.Objekat);
+                        odgovor.Ok = Controller.Instance.DodajZivotinju((Zivotinja)zahtev.Objekat);
                         break;
                     case Operacija.VratiSveZivotinje:
                         odgovor.Rezultat = Controller.Instance.VratiSveZivotinje();
                         break;
                     case Operacija.ObrisiZivotinju:
-                        Controller.Instance.ObrisiZivotinju(zahtev.Objekat as Zivotinja);
+                        odgovor.Ok=Controller.Instance.ObrisiZivotinju(zahtev.Objekat as Zivotinja);
                         break;
                     case Operacija.PronadjiZivotinje:
                         odgovor.Rezultat = Controller.Instance.PronadjiZivotinje(zahtev.Objekat as Zivotinja);
                         break;
                     case Operacija.AzurirajZivotinju:
-                        Controller.Instance.AzurirajZivotinju(zahtev.Objekat as Zivotinja);
+                        odgovor.Ok = Controller.Instance.AzurirajZivotinju(zahtev.Objekat as Zivotinja);
                         break;
                     case Operacija.DodajPaket:
-                        Controller.Instance.DodajPaket(zahtev.Objekat as Paket);
+                        odgovor.Ok = Controller.Instance.DodajPaket(zahtev.Objekat as Paket);
                         break;
                     case Operacija.VratiSvePakete:
                         odgovor.Rezultat = Controller.Instance.VratiSvePakete();
@@ -102,8 +102,14 @@ namespace ZooloskiVrt.Server.Main
                     case Operacija.DodajPrijavu:
                         Controller.Instance.DodajPrijavu(zahtev.Objekat as Prijava);
                         break;
+                    case Operacija.VratiSvePrijaveZaPosetioce:
+                        odgovor.Rezultat = Controller.Instance.VratiSvePrijaveZaPosetioce(zahtev.Objekat as PosetilacPrijava);
+                        break;
+                    case Operacija.IzbrisiZivotinjuIzPaketa:
+                        odgovor.Ok=Controller.Instance.ObrisiZivotinjuIzPaketa(zahtev.Objekat as PaketZivotinja);
+                        break;
                     case Operacija.VratiSvePrijave:
-                        odgovor.Rezultat = Controller.Instance.VratiSvePrijave(zahtev.Objekat as PosetilacPrijava);
+                        odgovor.Rezultat = Controller.Instance.VratiSvePrijave(zahtev.Objekat as Prijava);
                         break;
                     default:
                         break;

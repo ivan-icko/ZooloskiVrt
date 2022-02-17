@@ -40,11 +40,11 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             // 
             this.dgvPrijave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvPrijave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrijave.Location = new System.Drawing.Point(50, 78);
+            this.dgvPrijave.Location = new System.Drawing.Point(48, 97);
             this.dgvPrijave.Name = "dgvPrijave";
             this.dgvPrijave.RowHeadersWidth = 51;
             this.dgvPrijave.RowTemplate.Height = 24;
-            this.dgvPrijave.Size = new System.Drawing.Size(719, 150);
+            this.dgvPrijave.Size = new System.Drawing.Size(719, 385);
             this.dgvPrijave.TabIndex = 0;
             // 
             // lbl1
@@ -52,7 +52,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             this.lbl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl1.AutoSize = true;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.Location = new System.Drawing.Point(63, 22);
+            this.lbl1.Location = new System.Drawing.Point(62, 65);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(150, 29);
             this.lbl1.TabIndex = 1;
@@ -65,7 +65,7 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Posetioci
             this.Controls.Add(this.lbl1);
             this.Controls.Add(this.dgvPrijave);
             this.Name = "UCPrikaziPrijave";
-            this.Size = new System.Drawing.Size(832, 304);
+            this.Size = new System.Drawing.Size(832, 520);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrijave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
