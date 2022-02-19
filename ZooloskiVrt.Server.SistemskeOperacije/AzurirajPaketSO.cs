@@ -24,7 +24,13 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
             try
             {
                 repozitorijum.Azuriraj(paket);
-                repozitorijum.Obrisi(new PaketZivotinja() { Uslov = $"IdPaketa={paket.IdPaketa}" });
+                try
+                {
+                    repozitorijum.Obrisi(new PaketZivotinja() { Uslov = $"IdPaketa={paket.IdPaketa}" });
+                }
+                catch (Exception ex)
+                {
+                }
                 if (paket.ListaIdjevaZivotinja != null && paket.ListaIdjevaZivotinja.Count > 0)
                 {
                     foreach (int id in paket.ListaIdjevaZivotinja)

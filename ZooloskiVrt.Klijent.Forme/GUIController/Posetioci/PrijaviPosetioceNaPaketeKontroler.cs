@@ -23,8 +23,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             NapuniPosetioce();
             NapuniPakete();
             uc.BtnDodaj.Click += BtnDodaj_Click;
-            Sesija.Instance.Prijave =new List<Prijava>(
-            (Komunikacija.Instance.ZahtevajIVratiRezultat<List<Prijava>>(Common.Komunikacija.Operacija.VratiSvePrijave,new Prijava())));
+          
 
         }
 
@@ -32,19 +31,16 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
         {
             if (uc.DgvPaketi.SelectedRows.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da sacuva prijavu na paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show("Niste odabrali paket");
                 return;
             }
             if (uc.DgvPosetioci.SelectedRows.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da sacuva prijavu na paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show("Niste odabrali posetioca");
                 return;
             }
             if(!int.TryParse(uc.TxtBrojOsoba.Text,out int brojOsoba)||string.IsNullOrEmpty(uc.TxtBrojOsoba.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da sacuva prijavu na paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show("Greska pri unosu broja ocena!");
                 return;
             }
@@ -53,7 +49,9 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             Prijava p = new Prijava() { IdPaketa = (uc.DgvPaketi.SelectedRows[0].DataBoundItem as Paket).IdPaketa, IdPosetioca = (uc.DgvPosetioci.SelectedRows[0].DataBoundItem as Posetilac).IdPosetioca, BrojOsoba = brojOsoba
             ,DatumPrijave=DateTime.Now};
 
-            if (Sesija.Instance.Prijave.Contains(p))
+            List<Prijava> prijave = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Prijava>>(Common.Komunikacija.Operacija.VratiSvePrijave, new Prijava());
+
+            if (prijave!=null && prijave.Contains(p))
             {
                 System.Windows.Forms.MessageBox.Show("Sistem ne moze da sacuva prijavu na paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show("Posetilac se vec prijavio na paket!");

@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Server.Main
 {
@@ -14,6 +15,7 @@ namespace ZooloskiVrt.Server.Main
     {
         private Socket socket;
         private List<ClientHandler> klijenti = new List<ClientHandler>();
+        private List<Zaposleni> administratori = new List<Zaposleni>();
 
 
         public bool Start()
@@ -39,7 +41,7 @@ namespace ZooloskiVrt.Server.Main
                 while (true)
                 {
                     Socket klijentskiSocket = socket.Accept();
-                    ClientHandler client = new ClientHandler(klijentskiSocket);
+                    ClientHandler client = new ClientHandler(klijentskiSocket,administratori);
                     klijenti.Add(client);
                     client.OdjavljenKlijent += Handler_OdjavljenKlijent;
                     Thread nitKlijenta = new Thread(client.HandleRequests);

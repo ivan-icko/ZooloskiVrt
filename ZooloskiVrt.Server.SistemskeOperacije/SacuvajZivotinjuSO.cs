@@ -7,11 +7,11 @@ using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Server.SistemskeOperacije
 {
-    public class KreirajZivotinjuSO : OpstaSistemskaOperacija
+    public class SacuvajZivotinjuSO : OpstaSistemskaOperacija
     {
         private Zivotinja zivotinja;
         public bool Signal { get; set; } = true;
-        public KreirajZivotinjuSO(Zivotinja z)
+        public SacuvajZivotinjuSO(Zivotinja z)
         {
             zivotinja = z;
         }

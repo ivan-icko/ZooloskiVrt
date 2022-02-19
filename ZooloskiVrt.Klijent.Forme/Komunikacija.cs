@@ -10,7 +10,7 @@ using ZooloskiVrt.Common.Komunikacija;
 
 namespace ZooloskiVrt.Klijent.Forme
 {
-   public class Komunikacija
+    public class Komunikacija
     {
         private Socket socket;
         private CommunicationHelper helper;
@@ -36,20 +36,21 @@ namespace ZooloskiVrt.Klijent.Forme
             }
         }
 
-      
 
 
-        public Izlaz ZahtevajIVratiRezultat<Izlaz>(Operacija op, object o=null) where Izlaz : class
+
+        public Izlaz ZahtevajIVratiRezultat<Izlaz>(Operacija op, object o = null) where Izlaz : class
         {
             Zahtevaj(op, o);
             return VratiRezultat<Izlaz>();
         }
 
-        public bool ZahtevajBezVracanja(Operacija operacija,object o)
+        public void ZahtevajBezVracanja(Operacija operacija, object o = null)
         {
             Zahtevaj(operacija, o);
-            return VratiUspesnostZahteva();
-        } 
+            VratiRezultat<object>();
+            // return VratiUspesnostZahteva();
+        }
 
         public bool VratiUspesnostZahteva()
         {
@@ -67,18 +68,29 @@ namespace ZooloskiVrt.Klijent.Forme
         private T VratiRezultat<T>() where T : class
         {
             Odgovor odgovor = helper.Primi<Odgovor>();
+
             if (odgovor.Ok)
             {
+                if (odgovor.PrikaziPoruku)
+                {
+                    System.Windows.Forms.MessageBox.Show(odgovor.Poruka, "Uspesno", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                }
                 return (T)odgovor.Rezultat;
             }
             else if (!odgovor.Ok)
             {
+                if (odgovor.PrikaziPoruku)
+                {
+                    System.Windows.Forms.MessageBox.Show(odgovor.Poruka, "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                }
                 return null;
             }
             else
             {
-                throw new Exception("Sistemska greska");
+                throw new Exception();
             }
+
+
         }
 
         private void Zahtevaj(Operacija operacija, object objekat)
@@ -94,19 +106,19 @@ namespace ZooloskiVrt.Klijent.Forme
             }
             catch (IOException ex)
             {
-                System.Windows.Forms.MessageBox.Show("Greka pri komunikaciji sa serverom","Greska",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Greka pri komunikaciji sa serverom", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
         }
-
-        public void VratiRezultat()
-        {
-            Odgovor odgovor = helper.Primi<Odgovor>();
-            if (!odgovor.Ok)
-            {
-                System.Windows.Forms.MessageBox.Show(odgovor.Poruka);
-            }
-        }
+        /*
+                public void VratiRezultat()
+                {
+                    Odgovor odgovor = helper.Primi<Odgovor>();
+                    if (!odgovor.Ok)
+                    {
+                        System.Windows.Forms.MessageBox.Show(odgovor.Poruka);
+                    }
+                }*/
 
         public void Zatvori()
         {

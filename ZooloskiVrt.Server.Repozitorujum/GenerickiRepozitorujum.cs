@@ -45,7 +45,10 @@ namespace ZooloskiVrt.Server.Repozitorujum
         {
             SqlCommand command = broker.KreirajKomandu();
             command.CommandText = $"update {obj.NazivTabele} set {obj.Azuriranje} where {obj.Uslov}";
-            command.ExecuteNonQuery();
+            if (command.ExecuteNonQuery() == 0)
+            {
+                throw new Exception();
+            }
         }
 
         public List<IDomenskiObjekat> VratiSve(IDomenskiObjekat t)
@@ -83,8 +86,20 @@ namespace ZooloskiVrt.Server.Repozitorujum
         {
             SqlCommand command = broker.KreirajKomandu();
             command.CommandText = $"delete from {t.NazivTabele} where {t.Uslov}";
-            command.ExecuteNonQuery();
+            if (command.ExecuteNonQuery()==0) 
+            {
+                throw new Exception();
+            }
         }
+
+
+
+
+
+
+
+
+
 
         public void Dodaj(IDomenskiObjekat t)
         {

@@ -7,22 +7,23 @@ using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Server.SistemskeOperacije
 {
-    public class KreirajPaketSO : OpstaSistemskaOperacija
+    public class SacuvajZivotinjuUPaketSO : OpstaSistemskaOperacija
     {
-        private Paket p;
+        private PaketZivotinja paketZivotinja;
         public bool Signal { get; set; } = true;
-        public KreirajPaketSO(Paket p)
+
+        public SacuvajZivotinjuUPaketSO(PaketZivotinja paketZivotinja)
         {
-            this.p = p;
+            this.paketZivotinja = paketZivotinja;
         }
 
         protected override void Izvrsi()
         {
             try
             {
-                repozitorijum.Sacuvaj(p);
+                repozitorijum.Sacuvaj(paketZivotinja);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Signal = false;
                 throw;

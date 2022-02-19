@@ -33,6 +33,8 @@ namespace ZooloskiVrt.Common.Domen
 
         public Zaposleni(string ime, string prezime, string korisnickoIme, string sifra)
         {
+            KorisnickoIme = korisnickoIme;
+            Sifra = sifra;
             if (string.IsNullOrEmpty(ime)) { ime = "%"; }
             if (string.IsNullOrEmpty(prezime)) { prezime = "%"; }
             if (string.IsNullOrEmpty(korisnickoIme)) { korisnickoIme = "%"; }
@@ -51,6 +53,12 @@ namespace ZooloskiVrt.Common.Domen
                 Sifra = (string)reader["Sifra"]
             };
             return z;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Zaposleni zaposleni &&
+                   IdZaposlenog == zaposleni.IdZaposlenog;
         }
     }
 }

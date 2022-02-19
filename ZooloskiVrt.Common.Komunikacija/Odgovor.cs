@@ -14,5 +14,6 @@ namespace ZooloskiVrt.Common.Komunikacija
         public bool Ok { get; set; } = true;
         public object  Rezultat { get; set; }
         public bool KrajRada { get; set; } = false;
+        public bool PrikaziPoruku { get; set; } = true;
     }
 }

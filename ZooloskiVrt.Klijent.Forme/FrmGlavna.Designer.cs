@@ -97,6 +97,7 @@ namespace ZooloskiVrt.Klijent.Forme
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmGlavna";
             this.Text = "Zivotinje";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmGlavna_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

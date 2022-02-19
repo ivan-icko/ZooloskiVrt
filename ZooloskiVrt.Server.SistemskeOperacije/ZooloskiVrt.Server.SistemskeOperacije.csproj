@@ -45,9 +45,9 @@
     <Compile Include="AzurirajZivotinjuSO.cs" />
     <Compile Include="ObrisiZivotinjuIzPaketaSO.cs" />
     <Compile Include="SacuvajPrijavuSO.cs" />
-    <Compile Include="DodajZivotinjuUPaketSO.cs" />
-    <Compile Include="KreirajPaketSO.cs" />
-    <Compile Include="KreirajZivotinjuSO.cs" />
+    <Compile Include="SacuvajZivotinjuUPaketSO.cs" />
+    <Compile Include="SacuvajPaketSO.cs" />
+    <Compile Include="SacuvajZivotinjuSO.cs" />
     <Compile Include="ObrisiZivotinjuSO.cs" />
     <Compile Include="OpstaSistemskaOperacija.cs" />
     <Compile Include="PronadjiZaposlenogSO.cs" />

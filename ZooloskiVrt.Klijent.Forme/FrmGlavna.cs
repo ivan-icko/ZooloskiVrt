@@ -74,5 +74,10 @@ namespace ZooloskiVrt.Klijent.Forme
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(UcPretrazi);
         }
+
+        private void FrmGlavna_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.Kraj);
+        }
     }
 }

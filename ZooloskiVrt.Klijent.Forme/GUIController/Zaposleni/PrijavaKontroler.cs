@@ -9,7 +9,7 @@ using ZooloskiVrt.Common.Domen;
 
 namespace ZooloskiVrt.Klijent.Forme.GUIController
 {
-    
+
     class PrijavaKontroler
     {
         public Zaposleni Korisnik { get; set; }
@@ -22,32 +22,44 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Sva polja su obavezna");
                 return;
             }
-            Zaposleni korisnik = new Zaposleni(null,null,korisnickoIme,sifra);
+            Zaposleni korisnik = new Zaposleni(null, null, korisnickoIme, sifra);
 
             try
             {
                 Komunikacija.Instance.PoveziSe();
-                Sesija.Instance.Korisnik = Komunikacija.Instance.ZahtevajIVratiRezultat<Zaposleni>(Common.Komunikacija.Operacija.Prijava, korisnik);
-                if (Sesija.Instance.Korisnik != null)
+                korisnik = Komunikacija.Instance.ZahtevajIVratiRezultat<Zaposleni>(Common.Komunikacija.Operacija.Prijava, korisnik);
+                if (korisnik != null)
                 {
-                    
-                    MessageBox.Show("Sistem je nasao zaposlenog sa zadataim podacima!","Prijava zaposlenog",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                   
                     frmLogin.DialogResult = DialogResult.OK;
                 }
-                else
-                {
-                    MessageBox.Show("Sistem ne moze da pronadje zaposlenog na osnovu ucitanih vrednosti!", "Prijava zaposlenog", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-            /*catch (SystemOperationException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }*/
+
+            #region
+            /* {
+                 MessageBox.Show("Sistem ne moze da prodanje zaposlenog sa zadatim podacima!", "Prijava zaposlenog", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 return;
+             }
+             Sesija.Instance.Korisnici = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zaposleni>>(Common.Komunikacija.Operacija.VratiSvePrijavljeneZaposlene);
+
+             if (!Sesija.Instance.Korisnici.Contains(korisnik))
+             {
+
+                 MessageBox.Show("Sistem je nasao zaposlenog sa zadataim podacima!", "Prijava zaposlenog", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 Sesija.Instance.BrojPrijavljenih++;
+                 frmLogin.DialogResult = DialogResult.OK;
+             }
+             else
+             {
+                 MessageBox.Show("Taj zaposleni je vec prijavljen na sistem!", "Prijava zaposlenog", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 return;
+             }
+         }*/
+            #endregion
             catch (SocketException ex)
             {
                 System.Windows.Forms.MessageBox.Show("Greska u komunikaciji sa serverom", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                Environment.Exit(0);
+                //Environment.Exit(0);
+                Application.Exit();
             }
         }
     }

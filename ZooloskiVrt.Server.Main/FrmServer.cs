@@ -17,6 +17,7 @@ namespace ZooloskiVrt.Server.Main
         public FrmServer()
         {
             InitializeComponent();
+            
         }
 
         private void btnPokreni_Click(object sender, EventArgs e)
@@ -47,6 +48,7 @@ namespace ZooloskiVrt.Server.Main
 
         private void FrmServer_FormClosed(object sender, FormClosedEventArgs e)
         {
+            this.Dispose();
             Environment.Exit(0);
         }
     }
