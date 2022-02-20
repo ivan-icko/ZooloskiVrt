@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GUIController\Paketi\DodajZivotinjuUPaketKontroler.cs" />
+    <Compile Include="GUIController\Staro\DodajZivotinjuUPaketKontroler.cs" />
     <Compile Include="GUIController\Staro\ObrisiZivotinjuKontroler.cs" />
     <Compile Include="GUIController\Paketi\PaketiKontroler.cs" />
     <Compile Include="GUIController\Zivotinje\ZivotinjeKontroler.cs" />

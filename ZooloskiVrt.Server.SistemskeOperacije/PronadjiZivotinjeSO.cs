@@ -9,7 +9,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 {
     public class PronadjiZivotinjeSO : OpstaSistemskaOperacija
     {
-        public List<Zivotinja> Zivotinje { get; set; } = null;
+        public List<Zivotinja> Zivotinje { get; set; } = new List<Zivotinja>();
         public Zivotinja Z { get; set; }
         public PronadjiZivotinjeSO(Zivotinja z)
         {
@@ -18,7 +18,15 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 
         protected override void Izvrsi()
         {
-            Zivotinje = repozitorijum.Pretrazi(Z).OfType<Zivotinja>().ToList();
+            try
+            {
+                Zivotinje = repozitorijum.Pretrazi(Z).OfType<Zivotinja>().ToList();
+            }
+            catch (Exception ex)
+            {
+                Zivotinje = null;
+                throw;
+            }
 
         }
     }

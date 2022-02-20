@@ -43,9 +43,7 @@
   <ItemGroup>
     <Compile Include="AzurirajPaketSO.cs" />
     <Compile Include="AzurirajZivotinjuSO.cs" />
-    <Compile Include="ObrisiZivotinjuIzPaketaSO.cs" />
     <Compile Include="SacuvajPrijavuSO.cs" />
-    <Compile Include="SacuvajZivotinjuUPaketSO.cs" />
     <Compile Include="SacuvajPaketSO.cs" />
     <Compile Include="SacuvajZivotinjuSO.cs" />
     <Compile Include="ObrisiZivotinjuSO.cs" />

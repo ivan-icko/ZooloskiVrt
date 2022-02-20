@@ -16,11 +16,19 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
             this.zivotinja = zivotinja;
         }
 
-        public List<Zivotinja> Zivotinje { get; set; }
+        public List<Zivotinja> Zivotinje { get; set; } = new List<Zivotinja>();
 
         protected override void Izvrsi()
         {
-            Zivotinje = repozitorijum.VratiSve(zivotinja).OfType<Zivotinja>().ToList();
+            try
+            {
+                Zivotinje = repozitorijum.VratiSve(zivotinja).OfType<Zivotinja>().ToList();
+            }
+            catch (Exception ex)
+            {
+                Zivotinje = null;
+                throw;
+            }
         }
     }
 }

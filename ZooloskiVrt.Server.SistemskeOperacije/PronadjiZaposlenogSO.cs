@@ -18,7 +18,15 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
         }
         protected override void Izvrsi()
         {
-            Zaposleni = (repozitorijum.Pretrazi(Zaposleni)==null?null: (repozitorijum.Pretrazi(Zaposleni).OfType<Zaposleni>().ToList()).SingleOrDefault());
+            try
+            {
+                Zaposleni = (repozitorijum.Pretrazi(Zaposleni).OfType<Zaposleni>().ToList()).SingleOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Zaposleni = null;
+                throw;
+            }
         }
     }
 }

@@ -9,11 +9,20 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 {
     public class VratiSveZivotinjeSO : OpstaSistemskaOperacija
     {
-        public List<Zivotinja> Zivotinje { get; set; }
+        public List<Zivotinja> Zivotinje { get; set; } = new List<Zivotinja>();
 
         protected override void Izvrsi()
         {
-            Zivotinje = repozitorijum.VratiSve(new Zivotinja()).OfType<Zivotinja>().ToList();
+
+            try
+            {
+                Zivotinje = repozitorijum.VratiSve(new Zivotinja()).OfType<Zivotinja>().ToList();
+            }
+            catch (Exception ex)
+            {
+                Zivotinje = null;
+                throw;
+            }
         }
     }
 }

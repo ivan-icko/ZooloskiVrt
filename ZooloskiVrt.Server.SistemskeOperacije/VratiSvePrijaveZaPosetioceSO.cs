@@ -17,12 +17,20 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
             this.pp = pp;
         }
 
-        
-        public List<PosetilacPrijava> Prijave { get; set; }
+
+        public List<PosetilacPrijava> Prijave { get; set; } = new List<PosetilacPrijava>();
 
         protected override void Izvrsi()
         {
-            Prijave=repozitorijum.VratiSve(pp).OfType<PosetilacPrijava>().ToList();
+            try
+            {
+                Prijave = repozitorijum.VratiSve(pp).OfType<PosetilacPrijava>().ToList();
+            }
+            catch (Exception ex)
+            {
+                Prijave = null;
+                throw;
+            }
         }
     }
 }

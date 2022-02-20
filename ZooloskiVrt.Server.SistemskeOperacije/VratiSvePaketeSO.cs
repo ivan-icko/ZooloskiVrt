@@ -9,11 +9,19 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 {
     public class VratiSvePaketeSO : OpstaSistemskaOperacija   
     {
-        public List<Paket> Paketi { get; set; }
+        public List<Paket> Paketi { get; set; } = new List<Paket>();
 
         protected override void Izvrsi()
         {
-            Paketi = repozitorijum.VratiSve(new Paket()).OfType<Paket>().ToList();
+            try
+            {
+                Paketi = repozitorijum.VratiSve(new Paket()).OfType<Paket>().ToList();
+            }
+            catch (Exception ex) 
+            {
+                Paketi = null;
+                throw;
+            }
         }
     }
 }

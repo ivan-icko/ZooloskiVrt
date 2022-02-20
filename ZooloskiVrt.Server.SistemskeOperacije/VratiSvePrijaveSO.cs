@@ -10,7 +10,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
     public class VratiSvePrijaveSO : OpstaSistemskaOperacija
     {
         private Prijava pp;
-        public List<Prijava> Prijave { get; set; }
+        public List<Prijava> Prijave { get; set; } = new List<Prijava>();
 
         public VratiSvePrijaveSO(Prijava pp)
         {
@@ -19,7 +19,15 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 
         protected override void Izvrsi()
         {
-            Prijave =repozitorijum.VratiSve(pp).OfType<Prijava>().ToList();
+            try
+            {
+                Prijave = repozitorijum.VratiSve(pp).OfType<Prijava>().ToList();
+            }
+            catch (Exception ex)
+            {
+                Prijave = null;
+                throw;
+            }
         }
     }
 }

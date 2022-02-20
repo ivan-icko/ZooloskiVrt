@@ -45,27 +45,16 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 return;
             }
 
-
             Prijava p = new Prijava() { IdPaketa = (uc.DgvPaketi.SelectedRows[0].DataBoundItem as Paket).IdPaketa, IdPosetioca = (uc.DgvPosetioci.SelectedRows[0].DataBoundItem as Posetilac).IdPosetioca, BrojOsoba = brojOsoba
             ,DatumPrijave=DateTime.Now};
 
             List<Prijava> prijave = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Prijava>>(Common.Komunikacija.Operacija.VratiSvePrijave, new Prijava());
-
-            if (prijave!=null && prijave.Contains(p))
-            {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da sacuva prijavu na paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                System.Windows.Forms.MessageBox.Show("Posetilac se vec prijavio na paket!");
-                return;
-            }
-
             DodajPrijavu(p);
-            System.Windows.Forms.MessageBox.Show("Sistem je uspesno sacuvao prijavu na paket", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
 
         private void DodajPrijavu(Prijava p)
         {
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajPrijavu, p);
-           
         }
 
         private void NapuniPakete()

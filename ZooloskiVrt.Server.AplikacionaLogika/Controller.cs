@@ -105,12 +105,7 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             return ((PronadjiPaketeSO)so).Paketi;
         }
 
-        public bool DodajZivotinjuUPaket(PaketZivotinja paketZivotinja)
-        {
-            OpstaSistemskaOperacija so = new SacuvajZivotinjuUPaketSO(paketZivotinja);
-            so.IzvrsiTemplejt();
-            return ((SacuvajZivotinjuUPaketSO)so).Signal;
-        }
+    
 
         public List<Posetilac> VratiSvePosetioce(Posetilac posetilac)
         {
@@ -139,11 +134,6 @@ namespace ZooloskiVrt.Server.AplikacionaLogika
             return ((VratiSvePrijaveSO)so).Prijave;
         }
 
-        public bool ObrisiZivotinjuIzPaketa(PaketZivotinja paketZivotinja)
-        {
-            OpstaSistemskaOperacija so = new ObrisiZivotinjuIzPaketaSO(paketZivotinja);
-            so.IzvrsiTemplejt();
-            return ((ObrisiZivotinjuIzPaketaSO)so).Signal;
-        }
+      
     }
 }

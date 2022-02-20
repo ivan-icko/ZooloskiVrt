@@ -9,10 +9,18 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 {
     public class VratiSvePosetioceSO : OpstaSistemskaOperacija
     {
-        public List<Posetilac> Posetioci { get; set; }
+        public List<Posetilac> Posetioci { get; set; } = new List<Posetilac>();
         protected override void Izvrsi()
         {
-            Posetioci = repozitorijum.VratiSve(new Posetilac()).OfType<Posetilac>().ToList();
+            try
+            {
+                Posetioci = repozitorijum.VratiSve(new Posetilac()).OfType<Posetilac>().ToList();
+            }
+            catch (Exception ex)
+            {
+               Posetioci = null;
+                throw;
+            }
         }
     }
 }

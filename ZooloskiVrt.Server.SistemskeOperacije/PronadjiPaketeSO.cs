@@ -9,7 +9,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
 {
     public class PronadjiPaketeSO : OpstaSistemskaOperacija
     {
-        public List<Paket> Paketi { get; set; }
+        public List<Paket> Paketi { get; set; } = new List<Paket>();
         public Paket P { get; set; }
         public PronadjiPaketeSO(Paket p)
         {
@@ -18,7 +18,15 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
         protected override void Izvrsi()
         {
 
-            Paketi = repozitorijum.Pretrazi(P).OfType<Paket>().ToList();
+            try
+            {
+                Paketi = repozitorijum.Pretrazi(P).OfType<Paket>().ToList();
+            }
+            catch (Exception ex)
+            {
+                Paketi = null;
+                throw;
+            }
 
         }
     }

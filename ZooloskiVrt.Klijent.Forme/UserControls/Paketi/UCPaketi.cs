@@ -24,6 +24,6 @@ namespace ZooloskiVrt.Klijent.Forme.UserControls.Paketi
             kontroler.Inicijalizuj();
         }
 
-      
+        
     }
 }

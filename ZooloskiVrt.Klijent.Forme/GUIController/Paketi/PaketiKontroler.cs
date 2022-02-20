@@ -15,6 +15,8 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
         private UCPaketi uc;
         private Panel pnlMain;
         private List<Zivotinja> zivotinjeUPaketu = new List<Zivotinja>();
+        private List<Zivotinja> sveZivotinje = new List<Zivotinja>();
+        private List<Zivotinja> zivotinjeZaDodavanje = new List<Zivotinja>();
         private Paket izabraniPaket = new Paket();
         private Paket noviPaket = new Paket();
 
@@ -45,9 +47,15 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Niste izabrali zivotinju za brisanje");
                 return;
             }
-            int IdZivotinje = (uc.DgvZivotinjeUPaketu.SelectedRows[0].DataBoundItem as Zivotinja).IdZivotinje;
-            Sesija.Instance.ListaZivotinjaUPaketu.RemoveAll(a => a.IdZivotinje == IdZivotinje);
-            NapuniDgvZivotinje();
+            int idZivotinje = (uc.DgvZivotinjeUPaketu.SelectedRows[0].DataBoundItem as Zivotinja).IdZivotinje;
+            Zivotinja ziv = new Zivotinja() { IdZivotinje = idZivotinje, Uslov = $"IdZivotinje={idZivotinje}" };
+            List<Zivotinja> pom = new List<Zivotinja>();
+            if ((pom = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.PronadjiZivotinjeZaPaket, ziv)) == null)
+            {
+                return;
+            }
+            ziv = pom.SingleOrDefault();
+            AzurirajDgvoveSaZivotinjama(ziv, false);
         }
 
         private void BtnPretrazi_Click(object sender, EventArgs e)
@@ -114,7 +122,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             p.Cena = double.Parse(uc.TxtCena.Text);
             p.DatumDo = DateTime.Parse(uc.TxtDatumDo.Text);
 
-            foreach (var z in Sesija.Instance.ListaZivotinjaUPaketu)
+            foreach (var z in zivotinjeUPaketu)
             {
                 p.ListaIdjevaZivotinja.Add(z.IdZivotinje);
             }
@@ -170,11 +178,9 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 return;
             }
             izabraniPaket = pom.SingleOrDefault();
-
+            NapuniDgvoveZivotinjama();
+            //Sesija.Instance.ListaZivotinjaUPaketu = NapuniListuTrenutnihZivotinja(izabraniPaket.IdPaketa);
             NapuniPretragu(izabraniPaket);
-
-            Sesija.Instance.ListaZivotinjaUPaketu = NapuniListuTrenutnihZivotinja(izabraniPaket.IdPaketa);
-            NapuniDgvZivotinje();
         }
 
         private void NapuniDgvZivotinje()
@@ -196,19 +202,51 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private void BtnDodajZivotinju_Click(object sender, EventArgs e)
         {
-            if (uc.DgvPretrazi.SelectedRows.Count == 0)
+            if (uc.DgvDodajZivotinju.SelectedRows.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show("Niste odabrali paket za prikaz");
+                System.Windows.Forms.MessageBox.Show("Niste izabrali zivotinju za dodavanje");
                 return;
             }
-            UCDodajZivotinjuUPaket uc1 = new UCDodajZivotinjuUPaket((uc.DgvPretrazi.SelectedRows[0].DataBoundItem as Paket).IdPaketa);
-            uc1.Dock = DockStyle.Fill;
-            pnlMain.Controls.Clear();
-            pnlMain.Controls.Add(uc1);
+            int idZivotinje = (uc.DgvDodajZivotinju.SelectedRows[0].DataBoundItem as Zivotinja).IdZivotinje;
+            Zivotinja ziv = new Zivotinja() { IdZivotinje = idZivotinje, Uslov = $"IdZivotinje={idZivotinje}" };
+            List<Zivotinja> pom = new List<Zivotinja>();
+            if ((pom=Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.PronadjiZivotinjeZaPaket, ziv)) == null)
+            {
+                return;
+            }
+            ziv = pom.SingleOrDefault();
+            AzurirajDgvoveSaZivotinjama(ziv, true);
+
         }
+
+        private void AzurirajDgvoveSaZivotinjama(Zivotinja z, bool signal)
+        {
+            if (signal)
+            {
+                zivotinjeZaDodavanje.Remove(z);
+                zivotinjeUPaketu.Add(z);
+            }
+            else
+            {
+                zivotinjeZaDodavanje.Add(z);
+                zivotinjeUPaketu.Remove(z);
+            }
+            OsveziDgvoveSaZivotinjama();
+        }
+
+        private void OsveziDgvoveSaZivotinjama()
+        {
+            uc.DgvZivotinjeUPaketu.DataSource = new BindingList<Zivotinja>(zivotinjeUPaketu);
+            uc.DgvDodajZivotinju.DataSource = new BindingList<Zivotinja>(zivotinjeZaDodavanje);
+        }
+
         private void BtnDodaj_Click(object sender, EventArgs e)
         {
             if (!Validacija())
+            {
+                return;
+            }
+            if (!ValidacijaImena())
             {
                 return;
             }
@@ -216,8 +254,18 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             p = NapuniPaket(p);
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajPaket, p);
             OsveziDgv();
-           
 
+            
+        }
+
+        private bool ValidacijaImena()
+        {
+            if (Komunikacija.Instance.ZahtevajIVratiRezultat<List<Paket>>(Common.Komunikacija.Operacija.VratiSvePakete).Count(a => a.NazivPaketa == uc.TxtNazivPaketa.Text) >= 1)
+            {
+                System.Windows.Forms.MessageBox.Show($"Vec postoji paket sa takvim nazivom");
+                return false;
+            }
+            return true;
         }
 
         private void OsveziDgv()
@@ -252,6 +300,16 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 return false;
             }
             return true;
+        }
+
+        private void NapuniDgvoveZivotinjama()
+        {
+            sveZivotinje = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiSveZivotinje);
+            zivotinjeUPaketu = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiZIvotinjeZaPakete, new Zivotinja() { JoinUslov = "join PaketZivotinja on Zivotinja.IdZivotinje=PaketZivotinja.IdZivotinje", Uslov = $"where PaketZivotinja.IdPaketa={izabraniPaket.IdPaketa}" });
+            zivotinjeZaDodavanje = sveZivotinje.Where(x => !zivotinjeUPaketu.Contains(x)).ToList();
+
+            OsveziDgvoveSaZivotinjama();
+
         }
     }
 }

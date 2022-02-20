@@ -56,7 +56,7 @@ namespace ZooloskiVrt.Server.Main
             if (odgovor.Rezultat == null)
             {
                 odgovor.Ok = false;
-                odgovor.Poruka = "Sistem ne moze da pronadje zaposlenog sa zadatim vrednostima";
+                odgovor.Poruka = "Sistem ne moze da pronadje zaposlenog na osnovu ucitanih vrednosti!";
             }
             else
             {
@@ -71,7 +71,7 @@ namespace ZooloskiVrt.Server.Main
                 else
                 {
                     odgovor.Ok = true;
-                    odgovor.Poruka = "Sistem je pronasao zaposlenog po zadatim vrednostima";
+                    odgovor.Poruka = "Sistem je nasao zaposlenog po zadatim podacima!";
                     ulogovan = (Zaposleni)odgovor.Rezultat;
                     administratori.Add(ulogovan);
                 }
@@ -90,6 +90,14 @@ namespace ZooloskiVrt.Server.Main
                         break;
                     case Operacija.DodajZivotinju:
                         odgovor.Ok = Controller.Instance.DodajZivotinju((Zivotinja)zahtev.Objekat);
+                        if (odgovor.Ok)
+                        {
+                            odgovor.Poruka = "Sistem je zapamtio zivotinju";
+                        }
+                        else
+                        {
+                            odgovor.Poruka = "Sistem ne moze da zapamti zivotinju";
+                        }
                         break;
                     case Operacija.VratiSveZivotinje:
                         odgovor.Rezultat = Controller.Instance.VratiSveZivotinje();
@@ -110,21 +118,35 @@ namespace ZooloskiVrt.Server.Main
                         odgovor.Ok = Controller.Instance.ObrisiZivotinju(zahtev.Objekat as Zivotinja);
                         if (odgovor.Ok == false)
                         {
-                            odgovor.Poruka = "Sistem ne moze da obrise izabranu zivotinju";
+                            odgovor.Poruka = "Sistem ne moze da obrise zivotinju";
                         }
-                        else { odgovor.Poruka = "Sistem je uspesno obrisao zivotinju"; }
+                        else { odgovor.Poruka = "Sistem je obrisao zivotinju"; }
                         break;
                     case Operacija.PronadjiZivotinje:
                         odgovor.Rezultat = Controller.Instance.PronadjiZivotinje(zahtev.Objekat as Zivotinja);
                         if (odgovor.Rezultat == null)
                         {
-                            odgovor.Poruka = "Sistem ne moze da ucita podatke o zivotinji";
+                            odgovor.Poruka = "Sistem ne moze da pronadje zivotinje po zadatoj vrednosti";
                             odgovor.Ok = false;
                         }
                         else
                         {
                             odgovor.Ok = true;
-                            odgovor.Poruka = "Sistem je uspesno ucitao podatke o zivotinji";
+                            odgovor.Poruka = "Sistem je pronasao zivotinje po zadatoj vrednosti";
+                        }
+                        break;
+                    case Operacija.PronadjiZivotinjeZaPaket:
+                        odgovor.Rezultat = Controller.Instance.PronadjiZivotinje(zahtev.Objekat as Zivotinja);
+                        if (odgovor.Rezultat == null)
+                        {
+                            odgovor.Poruka = "Sistem ne moze da pronadje zivotinje po zadatoj vrednosti";
+                            odgovor.Ok = false;
+                        }
+                        else
+                        {
+                            odgovor.PrikaziPoruku = false;
+                            odgovor.Ok = true;
+                            odgovor.Poruka = "Sistem je pronasao zivotinje po zadatoj vrednosti";
                         }
                         break;
                     case Operacija.AzurirajZivotinju:
@@ -137,6 +159,14 @@ namespace ZooloskiVrt.Server.Main
                         break;
                     case Operacija.DodajPaket:
                         odgovor.Ok = Controller.Instance.DodajPaket(zahtev.Objekat as Paket);
+                        if (odgovor.Ok)
+                        {
+                            odgovor.Poruka = "Sistem je uspesno zapamtio paket";
+                        }
+                        else
+                        {
+                            odgovor.Poruka = "Sistem ne moze da zapamti paket";
+                        }
                         break;
                     case Operacija.VratiSvePakete:
                         odgovor.Rezultat = Controller.Instance.VratiSvePakete();
@@ -144,13 +174,13 @@ namespace ZooloskiVrt.Server.Main
                         {
                             odgovor.PrikaziPoruku = false;
                             odgovor.Ok = false;
-                            odgovor.Poruka = "Sistem ne moze da ucita podatke o paketima";
+                            odgovor.Poruka = "Sistem ne moze da ucita podatke o paketu";
                         }
                         else
                         {
                             odgovor.PrikaziPoruku = false;
                             odgovor.Ok = true;
-                            odgovor.Poruka = "Sistem je uspesno ucitao podatke o paketima";
+                            odgovor.Poruka = "Sistem je ucitao podatke o paketu";
                         }
                         break;
                     case Operacija.VratiZIvotinjeZaPakete:
@@ -189,34 +219,74 @@ namespace ZooloskiVrt.Server.Main
                             odgovor.Poruka = "Sistem je pronasao pakete po zadatoj vrednosti";
                         }
                         break;
-                    case Operacija.DodajZivotinjuUPaket:
+                    /*case Operacija.DodajZivotinjuUPaket:
                         odgovor.Ok = Controller.Instance.DodajZivotinjuUPaket(zahtev.Objekat as PaketZivotinja);
                         if (odgovor.Ok)
                         {
-                            odgovor.Poruka = "Sistem je uspesno dodao zivotinju u paket";
+                            odgovor.Poruka = "Sistem je dodao zivotinju u paket";
                         }
                         else
                         {
                             odgovor.Poruka = "Sistem ne moze da doda zivotinju u paket";
                         }
-                        break;
+                        break;*/
                     case Operacija.VratiSvePosetioce:
                         odgovor.Rezultat = Controller.Instance.VratiSvePosetioce(zahtev.Objekat as Posetilac);
+                        if (odgovor.Rezultat == null)
+                        {
+                            odgovor.Ok = false;
+                            odgovor.Poruka = "Sistem ne moze da ucita posetioce";
+                        }
+                        else
+                        {
+                            odgovor.Ok = true;
+                            odgovor.Poruka = "Sistem je uspesno ucitao posetioce";
+                            odgovor.PrikaziPoruku = false;
+                        }
                         break;
                     case Operacija.DodajPrijavu:
                         odgovor.Ok = Controller.Instance.DodajPrijavu(zahtev.Objekat as Prijava);
+                        if (odgovor.Ok)
+                        {
+                            odgovor.Poruka = "Sistem je uspesno sacuvao prijavu na paket";
+                        }
+                        else
+                        {
+                            odgovor.Poruka = "Sistem ne moze da sacuva prijavu na paket";
+                        }
                         break;
                     case Operacija.VratiSvePrijaveZaPosetioce:
                         odgovor.Rezultat = Controller.Instance.VratiSvePrijaveZaPosetioce(zahtev.Objekat as PosetilacPrijava);
+                        if (odgovor.Rezultat == null)
+                        {
+                            odgovor.Poruka = "Sistem ne moze da vrati prijave za posetioce";
+                            odgovor.Ok = false;
+                        }
+                        else
+                        {
+                            odgovor.Poruka = "Sistem je uspesno ucitao prijave za posetioce";
+                            odgovor.Ok = true;
+                            odgovor.PrikaziPoruku = false;
+                        }
                         break;
-                    case Operacija.IzbrisiZivotinjuIzPaketa:
-                        odgovor.Ok = Controller.Instance.ObrisiZivotinjuIzPaketa(zahtev.Objekat as PaketZivotinja);
-                        break;
+                  
                     case Operacija.VratiSvePrijave:
                         odgovor.Rezultat = Controller.Instance.VratiSvePrijave(zahtev.Objekat as Prijava);
+                        if (odgovor == null)
+                        {
+                            odgovor.Ok = false;
+                            odgovor.Poruka = "Sistem ne moze da prikaze prijave";
+                        }
+                        else
+                        {
+                            odgovor.Ok = true;
+                            odgovor.Poruka = "Sistem je uspesno ucitao prijave";
+                            odgovor.PrikaziPoruku = false;
+                        }
                         break;
                     case Operacija.Kraj:
                         administratori.Remove(ulogovan);
+                        odgovor.Poruka = "Dovodjenja";
                         break;
                     default:
                         break;

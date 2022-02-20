@@ -31,14 +31,22 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private void BtnDodaj_Click(object sender, EventArgs e)
         {
+            /* if (uc.DgvZivotinje.SelectedRows.Count == 0)
+             {
+                 System.Windows.Forms.MessageBox.Show("Niste izabrali zivotinju za dodavanje");
+                 return;
+             }
+             int IdZivotinje = (uc.DgvZivotinje.SelectedRows[0].DataBoundItem as Zivotinja).IdZivotinje;
+             PaketZivotinja pz = new PaketZivotinja() { IdZivotinje = IdZivotinje, IdPaketa = idPaketa };
+             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajZivotinjuUPaket,pz);
+             NapuniDgv();*/
             if (uc.DgvZivotinje.SelectedRows.Count == 0)
             {
                 System.Windows.Forms.MessageBox.Show("Niste izabrali zivotinju za dodavanje");
                 return;
             }
-            int IdZivotinje = (uc.DgvZivotinje.SelectedRows[0].DataBoundItem as Zivotinja).IdZivotinje;
-            PaketZivotinja pz = new PaketZivotinja() { IdZivotinje = IdZivotinje, IdPaketa = idPaketa };
-            Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajZivotinjuUPaket,pz);
+            int idZivotinje = (uc.DgvZivotinje.SelectedRows[0].DataBoundItem as Zivotinja).IdZivotinje;
+            Sesija.Instance.ListaZivotinjaUPaketu.Add(new Zivotinja() { IdZivotinje=idZivotinje}) ;
             NapuniDgv();
         }
 

@@ -52,7 +52,11 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             {
                 return;
             }
-
+            if (selektovanaZivotinja.IdZivotinje == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Niste odabrali zivotinju za azuriranje");
+                return;
+            }
             if (selektovanaZivotinja.OznakaZivotinje.ToString() != uc.TxtOznakaJedinke.Text)
             {
                 if (!ProveraOznake())
@@ -61,7 +65,10 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 }
             }
 
-            Zivotinja ziv = new Zivotinja(selektovanaZivotinja.IdZivotinje.ToString(), null, null, null, null, null, null);
+            Zivotinja ziv;
+            ziv = new Zivotinja(selektovanaZivotinja.IdZivotinje.ToString(), null, null, null, null, null, null);
+
+
 
             ziv.IdZivotinje = selektovanaZivotinja.IdZivotinje;
             ziv.OznakaZivotinje = int.Parse(uc.TxtOznakaJedinke.Text);
@@ -71,19 +78,9 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             ziv.Staniste = uc.TxtStaniste.Text;
             ziv.TipIshrane = (TipIshrane)uc.CmbTipIshrane.SelectedItem;
 
-            /*if (Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.AzurirajZivotinju, ziv))
-            {
-                OsveziDgv();
-                System.Windows.Forms.MessageBox.Show("Sistem je uspesno azurirao podatke o zivotinji", "Azuriranje", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-            }
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da azurira podatke o zivotinji", "Azuriranje", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return;
-            }*/
-
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.AzurirajZivotinju, ziv);
-
+            OsveziDgv();
+            selektovanaZivotinja.IdZivotinje = 0;
         }
 
         private bool ValidacijaAzuriranjaZivotinje()
@@ -108,7 +105,6 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
         {
             if (Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiSveZivotinje).Count(a => a.OznakaZivotinje.ToString() == uc.TxtOznakaJedinke.Text && a.Vrsta == uc.TxtVrsta.Text) >= 1)
             {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da zapamti zivotinju", "Unos zivotinje", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.MessageBox.Show($"Vec postoji {uc.TxtVrsta.Text} sa takvom oznakom");
                 return false;
             }
@@ -123,21 +119,11 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 return;
             }
 
-            /*Zivotinja z = (Zivotinja)uc.DgvPretrazi.SelectedRows[0].DataBoundItem;
-            z = new Zivotinja(z.IdZivotinje.ToString(), z.OznakaZivotinje.ToString(), z.Vrsta, z.Pol.ToString(), z.Starost.ToString(), z.Staniste, z.TipIshrane.ToString());*/
-
             int idZIvotinje = ((Zivotinja)uc.DgvPretrazi.SelectedRows[0].DataBoundItem).IdZivotinje;
             Zivotinja z = new Zivotinja() { Uslov = $"IdZivotinje={idZIvotinje}" };
 
-            /*  if (Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.ObrisiZivotinju, z))
-              {
-                  System.Windows.Forms.MessageBox.Show("Sistem je obrisao zivotinju", "Brisanje", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-                  OsveziDgv();
-              }
-
-              else { System.Windows.Forms.MessageBox.Show("Sistem ne moze da obrise zivotinju", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); return; }*/
-
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.ObrisiZivotinju, z);
+            OsveziDgv();
 
         }
 
@@ -150,13 +136,13 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             }
             int idZivotinje = ((Zivotinja)uc.DgvPretrazi.SelectedRows[0].DataBoundItem).IdZivotinje;
             List<Zivotinja> pom = new List<Zivotinja>();
-            if ((pom=Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.PronadjiZivotinje, new Zivotinja() { Uslov = $"IdZivotinje={idZivotinje}" })) == null)
+            if ((pom = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.PronadjiZivotinje, new Zivotinja() { Uslov = $"IdZivotinje={idZivotinje}" })) == null)
             {
                 return;
             }
             selektovanaZivotinja = pom.SingleOrDefault();
             NapuniPretragu(selektovanaZivotinja);
-            
+
         }
 
         private void NapuniPretragu(Zivotinja z)
@@ -181,15 +167,6 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             {
                 return;
             }
-            /*if (Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajZivotinju, z))
-            {
-                OsveziDgv();
-                System.Windows.Forms.MessageBox.Show("Sistem je zapamtio zivotinju", "Dodavanje zivotinje", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-            }
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da zapamti zivotinju", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }*/
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajZivotinju, z);
             OsveziDgv();
 
@@ -228,7 +205,6 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             List<Zivotinja> pronedjene = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiSveZivotinje);
             if (pronedjene == null)
             {
-                System.Windows.Forms.MessageBox.Show("Ne postoje zivotinje");
                 return;
             }
             else { OsveziDgv1(pronedjene); }
@@ -251,7 +227,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             List<Zivotinja> pronаdjene = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.PronadjiZivotinje, z);
             if (pronаdjene == null)
             {
-               /* System.Windows.Forms.MessageBox.Show("Sistem ne moze da pronadje zivotinju po zadatoj vrednosti", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);*/
+                /* System.Windows.Forms.MessageBox.Show("Sistem ne moze da pronadje zivotinju po zadatoj vrednosti", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);*/
                 return;
             }
             else { OsveziDgv1(pronаdjene); }
@@ -259,7 +235,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private void OsveziDgv1(List<Zivotinja> pronedjene)
         {
-          /*  System.Windows.Forms.MessageBox.Show($"Sistem je pronasao zivotinje po zadatoj vrednosti", "Pretraga", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);*/
+            /*  System.Windows.Forms.MessageBox.Show($"Sistem je pronasao zivotinje po zadatoj vrednosti", "Pretraga", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);*/
             uc.DgvPretrazi.DataSource = new BindingList<Zivotinja>(pronedjene);
         }
 
