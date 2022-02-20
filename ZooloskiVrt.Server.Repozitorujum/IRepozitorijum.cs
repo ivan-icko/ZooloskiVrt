@@ -15,12 +15,14 @@ namespace ZooloskiVrt.Server.Repozitorujum
         void Rollback();
         void ZatvoriKonekciju();
 
+
         List<T> VratiSve(T t);
         List<T> Pretrazi(T t);
         void Sacuvaj(T t);
         T IzaberiRed(T t);
         void Azuriraj(T t);
         void Obrisi(T t);
-        void Dodaj(T t);
+        
+        int VratiNajveciId(T t);
     }
 }

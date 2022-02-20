@@ -20,9 +20,17 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
         {
             try
             {
+                
                 repozitorijum.Sacuvaj(p);
+                if (p.ListaIdjevaZivotinja != null && p.ListaIdjevaZivotinja.Count > 0)
+                {
+                    foreach (int id in p.ListaIdjevaZivotinja)
+                    {
+                        repozitorijum.Sacuvaj(new PaketZivotinja { IdPaketa = repozitorijum.VratiNajveciId(p), IdZivotinje = id });
+                    }
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Signal = false;
                 throw;

@@ -30,6 +30,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
         public void Inicijalizuj()
         {
             OsveziDgv();
+            NapuniPocetneDgvoveSaZivotinjama();
             uc.BtnDodaj.Click += BtnDodaj_Click;
             uc.BtnDodajZivotinju.Click += BtnDodajZivotinju_Click;
             uc.BtnPrikazi.Click += BtnPrikazi_Click;
@@ -116,6 +117,11 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             {
                 return;
             }
+            if (izabraniPaket.IdPaketa == 0)
+            {
+                MessageBox.Show("Niste odabrali paket za azuriranje");
+                return;
+            }
             Paket p = new Paket(izabraniPaket.IdPaketa.ToString(), null, null, null);
             p.IdPaketa = izabraniPaket.IdPaketa;
             p.NazivPaketa = uc.TxtNazivPaketa.Text;
@@ -127,7 +133,8 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 p.ListaIdjevaZivotinja.Add(z.IdZivotinje);
             }
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.AzurirajPaket, p);
-
+            izabraniPaket.IdPaketa = 0;
+            OsveziDgv();
         }
 
         private bool ValidacijaAzuriranja()
@@ -252,10 +259,12 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             }
             Paket p = new Paket();
             p = NapuniPaket(p);
+            foreach (var z in zivotinjeUPaketu)
+            {
+                p.ListaIdjevaZivotinja.Add(z.IdZivotinje);
+            }
             Komunikacija.Instance.ZahtevajBezVracanja(Common.Komunikacija.Operacija.DodajPaket, p);
             OsveziDgv();
-
-            
         }
 
         private bool ValidacijaImena()
@@ -310,6 +319,13 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
             OsveziDgvoveSaZivotinjama();
 
+        }
+
+        private void NapuniPocetneDgvoveSaZivotinjama()
+        {
+            sveZivotinje = Komunikacija.Instance.ZahtevajIVratiRezultat<List<Zivotinja>>(Common.Komunikacija.Operacija.VratiSveZivotinje);
+            uc.DgvDodajZivotinju.DataSource = new BindingList<Zivotinja>(sveZivotinje);
+            zivotinjeZaDodavanje = sveZivotinje;
         }
     }
 }

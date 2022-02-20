@@ -101,10 +101,7 @@ namespace ZooloskiVrt.Server.Repozitorujum
 
 
 
-        public void Dodaj(IDomenskiObjekat t)
-        {
-            throw new NotImplementedException();
-        }
+   
 
         public IDomenskiObjekat IzaberiRed(IDomenskiObjekat obj)
         {
@@ -119,6 +116,13 @@ namespace ZooloskiVrt.Server.Repozitorujum
                 }
             }
             return obj1;
+        }
+
+        public int VratiNajveciId(IDomenskiObjekat t)
+        {
+            SqlCommand command = broker.KreirajKomandu();
+            command.CommandText = $"select max({t.IdKolona}) from {t.NazivTabele}";
+            return (int)command.ExecuteScalar();
         }
     }
 }

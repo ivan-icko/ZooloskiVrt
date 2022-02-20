@@ -32,6 +32,7 @@ namespace ZooloskiVrt.Common.Domen
         public string Azuriranje { get; set; }
 
         public string JoinUslov { get; set; }
+        public string IdKolona { get; }
 
         public override bool Equals(object obj)
         {

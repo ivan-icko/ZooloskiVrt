@@ -219,17 +219,7 @@ namespace ZooloskiVrt.Server.Main
                             odgovor.Poruka = "Sistem je pronasao pakete po zadatoj vrednosti";
                         }
                         break;
-                    /*case Operacija.DodajZivotinjuUPaket:
-                        odgovor.Ok = Controller.Instance.DodajZivotinjuUPaket(zahtev.Objekat as PaketZivotinja);
-                        if (odgovor.Ok)
-                        {
-                            odgovor.Poruka = "Sistem je dodao zivotinju u paket";
-                        }
-                        else
-                        {
-                            odgovor.Poruka = "Sistem ne moze da doda zivotinju u paket";
-                        }
-                        break;*/
+                    
                     case Operacija.VratiSvePosetioce:
                         odgovor.Rezultat = Controller.Instance.VratiSvePosetioce(zahtev.Objekat as Posetilac);
                         if (odgovor.Rezultat == null)

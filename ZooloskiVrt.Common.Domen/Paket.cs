@@ -35,6 +35,8 @@ namespace ZooloskiVrt.Common.Domen
         public string Azuriranje => $"NazivPaketa='{NazivPaketa}', Cena={Cena}, DatumDo='{DatumDo}'";
         [Browsable(false)]
         public string JoinUslov { get; set;}
+        [Browsable(false)]
+        public string IdKolona { get; } = "IdPaketa";
 
         public IDomenskiObjekat ProcitajRed(SqlDataReader reader)
         {

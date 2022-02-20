@@ -27,6 +27,7 @@ namespace ZooloskiVrt.Common.Domen
         public string Azuriranje => throw new NotImplementedException();
 
         public string JoinUslov { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string IdKolona { get; }
 
         public IDomenskiObjekat ProcitajRed(SqlDataReader rezultat)
         {

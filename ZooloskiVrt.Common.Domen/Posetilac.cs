@@ -29,6 +29,8 @@ namespace ZooloskiVrt.Common.Domen
         public string Azuriranje  {get;set;}
         [Browsable(false)]
         public string JoinUslov { get; set; }
+        [Browsable(false)]
+        public string IdKolona { get; }
 
         public IDomenskiObjekat ProcitajRed(SqlDataReader reader)
         {

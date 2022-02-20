@@ -25,11 +25,13 @@ namespace ZooloskiVrt.Common.Domen
         [Browsable(false)]
         public string Uslov { get; set; }
         [Browsable(false)]
-        public string Kolone =>"(Ime,Prezime,KorisnickoIme,Sifra)";
+        public string Kolone => "(Ime,Prezime,KorisnickoIme,Sifra)";
 
         public string Azuriranje { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public string JoinUslov { get; set; }
+        [Browsable(false)]
+        public string IdKolona { get; } 
 
         public Zaposleni(string ime, string prezime, string korisnickoIme, string sifra)
         {

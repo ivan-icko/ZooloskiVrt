@@ -34,6 +34,7 @@ namespace ZooloskiVrt.Common.Domen
         public string Azuriranje => $"OznakaZivotinje={OznakaZivotinje},Vrsta='{Vrsta}',Pol='{Pol}',Starost={Starost},Staniste='{Staniste}',TipIshrane='{TipIshrane}'";
 
         public string JoinUslov { get; set; }
+        public string IdKolona { get; } = "IdZivotinje";
 
         public Zivotinja(string id,string oznakaZivotinje,string vrsta,string pol, string starost, string staniste, string tipIshrane)
         {
