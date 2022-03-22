@@ -54,37 +54,37 @@ namespace ZooloskiVrt.Klijent.Forme
             this.posetiociToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1466, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1466, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // zivotinjeToolStripMenuItem
             // 
             this.zivotinjeToolStripMenuItem.Name = "zivotinjeToolStripMenuItem";
-            this.zivotinjeToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.zivotinjeToolStripMenuItem.Size = new System.Drawing.Size(81, 26);
             this.zivotinjeToolStripMenuItem.Text = "Zivotinje";
             this.zivotinjeToolStripMenuItem.Click += new System.EventHandler(this.zivotinjeToolStripMenuItem_Click);
             // 
             // paketiToolStripMenuItem
             // 
             this.paketiToolStripMenuItem.Name = "paketiToolStripMenuItem";
-            this.paketiToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.paketiToolStripMenuItem.Size = new System.Drawing.Size(62, 26);
             this.paketiToolStripMenuItem.Text = "Paketi";
             this.paketiToolStripMenuItem.Click += new System.EventHandler(this.paketiToolStripMenuItem_Click);
             // 
             // posetiociToolStripMenuItem
             // 
             this.posetiociToolStripMenuItem.Name = "posetiociToolStripMenuItem";
-            this.posetiociToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.posetiociToolStripMenuItem.Size = new System.Drawing.Size(82, 26);
             this.posetiociToolStripMenuItem.Text = "Posetioci";
             this.posetiociToolStripMenuItem.Click += new System.EventHandler(this.posetiociToolStripMenuItem_Click);
             // 
             // pnlMain
             // 
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 28);
+            this.pnlMain.Location = new System.Drawing.Point(0, 30);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1466, 888);
+            this.pnlMain.Size = new System.Drawing.Size(1466, 886);
             this.pnlMain.TabIndex = 2;
             // 
             // FrmGlavna

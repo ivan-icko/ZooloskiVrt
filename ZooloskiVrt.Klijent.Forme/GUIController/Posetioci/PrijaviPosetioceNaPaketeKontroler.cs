@@ -39,9 +39,9 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Niste odabrali posetioca");
                 return;
             }
-            if(!int.TryParse(uc.TxtBrojOsoba.Text,out int brojOsoba)||string.IsNullOrEmpty(uc.TxtBrojOsoba.Text))
+            if(string.IsNullOrEmpty(uc.TxtBrojOsoba.Text)|| !int.TryParse(uc.TxtBrojOsoba.Text, out int brojOsoba) ||brojOsoba<=0)
             {
-                System.Windows.Forms.MessageBox.Show("Greska pri unosu broja ocena!");
+                System.Windows.Forms.MessageBox.Show("Greska pri unosu broja osoba!");
                 return;
             }
 

@@ -22,11 +22,12 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
             {
                 
                 repozitorijum.Sacuvaj(p);
+                int maxId = repozitorijum.VratiNajveciId(p);
                 if (p.ListaIdjevaZivotinja != null && p.ListaIdjevaZivotinja.Count > 0)
                 {
                     foreach (int id in p.ListaIdjevaZivotinja)
                     {
-                        repozitorijum.Sacuvaj(new PaketZivotinja { IdPaketa = repozitorijum.VratiNajveciId(p), IdZivotinje = id });
+                        repozitorijum.Sacuvaj(new PaketZivotinja { IdPaketa = maxId, IdZivotinje = id });
                     }
                 }
             }

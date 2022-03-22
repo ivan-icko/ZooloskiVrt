@@ -20,7 +20,7 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
         {
             try
             {
-                repozitorijum   .Sacuvaj(zivotinja);
+                repozitorijum.Sacuvaj(zivotinja);
             }
             catch (Exception ex)
             {

@@ -68,8 +68,6 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             Zivotinja ziv;
             ziv = new Zivotinja(selektovanaZivotinja.IdZivotinje.ToString(), null, null, null, null, null, null);
 
-
-
             ziv.IdZivotinje = selektovanaZivotinja.IdZivotinje;
             ziv.OznakaZivotinje = int.Parse(uc.TxtOznakaJedinke.Text);
             ziv.Vrsta = uc.TxtVrsta.Text;
@@ -93,11 +91,17 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Sva polja su obavezna!");
                 return false;
             }
-            else if (!int.TryParse(uc.TxtStarost.Text, out int starost) || !int.TryParse(uc.TxtOznakaJedinke.Text, out int oznaka))
+            if (!int.TryParse(uc.TxtStarost.Text, out int starost) || starost <= 0)
             {
-                System.Windows.Forms.MessageBox.Show("Starost mora biti ceo broj");
+                System.Windows.Forms.MessageBox.Show("Greska pri unosu starosti");
                 return false;
             }
+            if (!int.TryParse(uc.TxtOznakaJedinke.Text, out int oznaka) || oznaka <= 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Greska pri unosu oznake");
+                return false;
+            }
+
             return true;
         }
 
@@ -192,9 +196,14 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Sva polja su obavezna!");
                 return false;
             }
-            else if (!int.TryParse(uc.TxtStarost.Text, out int starost) || !int.TryParse(uc.TxtOznakaJedinke.Text, out int oznaka))
+            if (!int.TryParse(uc.TxtStarost.Text, out int starost) || starost <= 0)
             {
-                System.Windows.Forms.MessageBox.Show("Starost mora biti ceo broj");
+                System.Windows.Forms.MessageBox.Show("Greska pri unosu starosti");
+                return false;
+            }
+            if (!int.TryParse(uc.TxtOznakaJedinke.Text, out int oznaka) || oznaka <= 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Greska pri unosu oznake");
                 return false;
             }
             return true;
@@ -241,11 +250,35 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
         private bool Validacija()
         {
-            if ((!int.TryParse(uc.TxtOznakaJedinke.Text, out int oznakaZivotinje) && !string.IsNullOrEmpty(uc.TxtOznakaJedinke.Text)) || (!int.TryParse(uc.TxtStarost.Text, out int starost) && !string.IsNullOrEmpty(uc.TxtStarost.Text)))
+            int oznakaZivotinje = 0;
+            int starost = 0;
+            if (!string.IsNullOrEmpty(uc.TxtOznakaJedinke.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Starost mora biti ceo broj");
-                return false;
+                if (int.TryParse(uc.TxtOznakaJedinke.Text, out int a) && a>0)
+                {
+                    oznakaZivotinje = a;
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Greska pri unosu oznake");
+                    return false;
+                }
             }
+
+            if (!string.IsNullOrEmpty(uc.TxtStarost.Text))
+            {
+                if (int.TryParse(uc.TxtStarost.Text, out int b) && b > 0)
+                {
+                    starost = b;
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Greska pri unosu oznake");
+                    return false;
+                }
+            }
+
+
             string oznaka = oznakaZivotinje == 0 ? null : oznakaZivotinje.ToString();
             string pol = uc.CmbPol.SelectedItem != null ? (((Pol)uc.CmbPol.SelectedItem).ToString()) : null;
             string tipIshrane = uc.CmbTipIshrane.SelectedItem != null ? (((TipIshrane)uc.CmbTipIshrane.SelectedItem).ToString()) : null;
@@ -255,6 +288,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
 
             z = new Zivotinja(null, oznaka, vrsta, pol, star, staniste, tipIshrane);
             return true;
+
 
         }
 

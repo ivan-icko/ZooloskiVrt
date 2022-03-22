@@ -11,10 +11,13 @@ namespace ZooloskiVrt.Server.SistemskeOperacije
     {
         
         
+        
+        
         public Zaposleni Zaposleni { get; set; }
         public PronadjiZaposlenogSO(Zaposleni z)
         {
             Zaposleni = z;
+
         }
         protected override void Izvrsi()
         {

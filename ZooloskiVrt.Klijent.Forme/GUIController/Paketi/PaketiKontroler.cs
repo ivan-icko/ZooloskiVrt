@@ -84,7 +84,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
             DateTime datumDo = new DateTime();
             if (!string.IsNullOrEmpty(uc.TxtCena.Text))
             {
-                if (!double.TryParse(uc.TxtCena.Text, out double cena))
+                if (!double.TryParse(uc.TxtCena.Text, out double cena) || cena<0)
                 {
                     System.Windows.Forms.MessageBox.Show("Greska pri unosu cene");
                     return false;
@@ -144,7 +144,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Sva polja su obavezna");
                 return false;
             }
-            if (!double.TryParse(uc.TxtCena.Text, out double cena))
+            if (!double.TryParse(uc.TxtCena.Text, out double cena) || cena<0)
             {
                 System.Windows.Forms.MessageBox.Show("Greska pri unosu cene");
                 return false;
@@ -298,7 +298,7 @@ namespace ZooloskiVrt.Klijent.Forme.GUIController
                 System.Windows.Forms.MessageBox.Show("Sva polja su obavezna");
                 return false;
             }
-            if (!double.TryParse(uc.TxtCena.Text, out double cena))
+            if (!double.TryParse(uc.TxtCena.Text, out double cena) || cena<0)
             {
                 System.Windows.Forms.MessageBox.Show("Greska pri unosu cene");
                 return false;
